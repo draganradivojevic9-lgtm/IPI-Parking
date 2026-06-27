@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0b0b0c">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon.png">
+    <title>IPI PARKING</title>
+    <style>
+        :root {
+            --bg: #0b0b0c; --card-gray: #1c1c1e; --card-text: #ffffff;
+            --text: #ffffff; --green: #32d74b; --blue: #0a84ff;
+            --nav-bg: #161618; --border: #2c2c2e; --red: #ff453a;
+        }
+        body.light-mode {
+            --bg: #f2f2f7; --card-gray: #e5e5ea; --card-text: #000000;
+            --text: #000000; --nav-bg: #ffffff; --border: #d1d1d6;
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; user-select: none; }
+       
+        /* MOBILE LOCK - Sprečava rastezanje i skrolovanje stranice */
+        html, body {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden; background: var(--bg); margin: 0; padding: 0;
+        }
+        body { color: var(--text); font-family: -apple-system, sans-serif; }
+       
+        /* GLAVNI KONTEJNER */
+        .app-container {
+            position: absolute; top: 0; bottom: 0; left: 0; right: 0;
+            display: flex; flex-direction: column; max-width: 430px; margin: 0 auto;
+            overflow: hidden; background: var(--bg);
+        }
+       
+        /* ZAGLAVLJE */
+        .header {
+            display: grid; grid-template-columns: 85px 1fr 85px; align-items: center;
+            padding: 0 16px; border-bottom: 1px solid var(--border); height: 60px; flex-shrink: 0;
+        }
+        .left-controls, .right-controls { display: flex; gap: 2px; background: var(--card-gray); padding: 4px; border-radius: 8px; width: 100%; }
+        .toggle-btn { flex: 1; text-align: center; padding: 6px 0; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; color: #8e8e93; transition: 0.2s; }
+        .toggle-btn.active { color: var(--text); background: var(--border); }
+        .app-logo-text { justify-self: center; font-size: 17px; font-weight: 800; color: var(--text); letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
+       
+        /* STATUS I LOKACIJA */
+        .status-area {
+            text-align: center; padding: 4px 16px; flex-shrink: 0; height: 105px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .loc-name { font-size: 20px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: -0.3px; line-height: 1.1; }
+        .free-badge { color: var(--green); font-size: 14px; display: block; margin-top: 2px; }
+        .veh-line { font-size: 13px; color: #8e8e93; margin-top: 4px; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; padding: 4px 12px; background: var(--card-gray); border-radius: 8px; }
+        .street-name { font-size: 12px; color: var(--green); font-weight: 600; margin-top: 4px; height: 28px; line-height: 1.2; display: flex; justify-content: center; align-items: center; text-align: center; }
+       
+        /* MREŽA ZONA */
+        .main-content {
+            flex: 1; min-height: 0; padding: 4px 12px;
+            display: grid; grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(5, minmax(0, 1fr));
+            gap: 6px; overflow: hidden;
+        }
+        .zone-card { background: var(--card-gray); border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px solid transparent; cursor: pointer; padding: 2px; text-align: center; transition: all 0.2s ease-in-out; min-height: 0; }
+        .zone-card:active { transform: scale(0.97); }
+        .zone-card.detected { border: 3px solid var(--green) !important; box-shadow: 0 0 15px rgba(50, 215, 75, 0.4); transform: scale(1.03); background-color: rgba(50, 215, 75, 0.1); }
+        .zone-card.locked { opacity: 0.35; pointer-events: none; }
+        .zone-card b { font-size: 14px; color: var(--card-text); font-weight: 600; }
+       
+        /* DONJI BLOK */
+        .bottom-container {
+            flex-shrink: 0; display: flex; flex-direction: column;
+            background: var(--bg); border-top: 1px solid var(--border); width: 100%;
+            padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 999;
+        }
+       
+        /* TAJMER BAR */
+        .timer-bar {
+            height: 40px; opacity: 0; visibility: hidden; background: #1c1c1e; color: var(--green);
+            display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; transition: opacity 0.3s; position: relative; border-bottom: 1px solid var(--border);
+        }
+        .timer-bar.visible { opacity: 1; visibility: visible; }
+        .cancel-timer { position: absolute; right: 12px; color: var(--red); font-weight: bold; cursor: pointer; padding: 4px 8px; font-size: 11px; background: var(--border); border-radius: 6px; }
+       
+        /* NAVIGACIJA */
+        .nav { height: 60px; display: flex; justify-content: space-around; align-items: center; background: var(--nav-bg); }
+        .nav-item { text-align: center; color: #8e8e93; font-size: 11px; cursor: pointer; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+        .nav-item.active { color: var(--blue); }
+        .nav-item span { font-size: 20px; margin-bottom: 2px; }
+       
+        /* MODALI */
+        .v-picker { position: absolute; bottom: 0; left: 0; right: 0; height: 75vh; background: var(--card-gray); border-radius: 24px 24px 0 0; padding: 20px; transform: translateY(100%); transition: 0.4s; z-index: 10000; display: flex; flex-direction: column; }
+        .v-picker.open { transform: translateY(0); }
+        .picker-header { font-size: 16px; color: #8e8e93; text-align: center; margin-bottom: 20px; font-weight: 700; }
+        .picker-list { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+        .v-row { background: var(--border); color: var(--text); padding: 16px; border-radius: 14px; cursor: pointer; font-weight: 600; text-align: center; }
+        .v-row.air-row { background: #2c2c2e; color: #32d74b; font-size: 15px; }
+        body.light-mode .v-row.air-row { background: #d1d1d6; color: #28a745; }
+        .close-btn { width: 100%; padding: 16px; background: none; border: none; color: var(--blue); font-size: 16px; font-weight: 700; cursor: pointer; }
+        .history-item { background: var(--border); padding: 12px; border-radius: 10px; margin-bottom: 8px; font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
+        .history-item span { color: #8e8e93; font-size: 11px; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+       
+        <div class="header">
+            <div class="left-controls">
+                <div id="btn-dark" class="toggle-btn active" onclick="setTheme('dark')">☀️</div>
+                <div id="btn-light" class="toggle-btn" onclick="setTheme('light')">🌙</div>
+            </div>
+            <div class="app-logo-text">IPI PARKING</div>
+            <div class="right-controls">
+                <div id="btn-srb" class="toggle-btn active" onclick="setLang('SRB')">SRB</div>
+                <div id="btn-eng" class="toggle-btn" onclick="setLang('ENG')">ENG</div>
+            </div>
+        </div>
+       
+        <div class="status-area">
+            <div class="loc-name" id="loc">📍 Lociranje...</div>
+            <div class="veh-line" onclick="openPicker()"><span id="lbl-v">Vozilo</span>: <b id="current-plate">---</b></div>
+            <div class="street-name" id="street"></div>
+        </div>
+       
+        <div class="main-content" id="grid-container"></div>
+       
+        <div class="bottom-container">
+            <div id="active-timer" class="timer-bar">
+                <span id="timer-text"></span>
+                <span class="cancel-timer" onclick="cancelTimer()">X</span>
+            </div>
+            <nav class="nav">
+                <div class="nav-item active" onclick="location.reload()"><span>🏠</span><div id="lbl-home">Početna</div></div>
+                <div class="nav-item" onclick="openOverlay('history-picker')"><span>📜</span><div id="lbl-hist">Istorija</div></div>
+                <div class="nav-item" onclick="openOverlay('about-picker')"><span>ℹ️</span><div id="lbl-about">O nama</div></div>
+                <div class="nav-item" onclick="window.location.href='podesavanja.html'"><span>⚙️</span><div id="lbl-set">Podešavanja</div></div>
+            </nav>
+        </div>
+
+        <div id="picker" class="v-picker">
+            <div id="lbl-pick" class="picker-header">IZBOR VOZILA</div>
+            <div class="picker-list" id="v-list"></div>
+            <button onclick="closePicker()" id="lbl-close1" class="close-btn">Zatvori</button>
+        </div>
+
+        <div id="history-picker" class="v-picker">
+            <div id="lbl-hist-title" class="picker-header">ISTORIJA PLAĆANJA</div>
+            <div class="picker-list" id="history-list"></div>
+            <button onclick="closeOverlay('history-picker')" id="lbl-close2" class="close-btn">Zatvori</button>
+        </div>
+
+        <div id="airport-picker" class="v-picker">
+            <div id="lbl-air-title" class="picker-header">AERODROMI - PARKING</div>
+            <div class="picker-list">
+                <div class="v-row air-row" onclick="openMap('https://www.google.com/maps/search/?api=1&query=parking+aerodrom+nikola+tesla+beograd')">✈️ Nikola Tesla (Beograd)</div>
+                <div class="v-row air-row" onclick="openMap('https://www.google.com/maps/search/?api=1&query=parking+aerodrom+konstantin+veliki+nis')">✈️ Konstantin Veliki (Niš)</div>
+                <div class="v-row air-row" onclick="openMap('https://www.google.com/maps/search/?api=1&query=parking+aerodrom+morava+kraljevo')">✈️ Morava (Kraljevo)</div>
+            </div>
+            <button onclick="closeOverlay('airport-picker')" id="lbl-close4" class="close-btn">Zatvori</button>
+        </div>
+
+        <div id="garage-picker" class="v-picker">
+            <div id="lbl-garage-title" class="picker-header">GARAŽE I RAMPE</div>
+            <div class="picker-list" id="garage-list"></div>
+            <button onclick="closeOverlay('garage-picker')" id="lbl-close5" class="close-btn">Zatvori</button>
+        </div>
+
+        <div id="about-picker" class="v-picker">
+            <div id="lbl-about-title" class="picker-header">O APLIKACIJI</div>
+            <div class="picker-list" style="color: var(--text); font-size: 14px; line-height: 1.5; padding: 10px; text-align: center;">
+                <p style="font-weight: bold; font-size: 18px; color: var(--green); margin-bottom: 10px;">IPI Parking Pro</p>
+                <p id="lbl-about-text">Brzo, jednostavno i automatizovano plaćanje parkinga SMS-om.</p>
+                <p style="margin-top: 20px; color: #8e8e93; font-size: 12px;">Verzija 4.5 © 2026</p>
+            </div>
+            <button onclick="closeOverlay('about-picker')" id="lbl-close3" class="close-btn">Zatvori</button>
+        </div>
+    </div>
+   
+    <script>
+        let lang = localStorage.getItem('ipi_lang') || 'SRB';
+        let currentTheme = localStorage.getItem('ipi_theme') || 'dark';
+        let parkingData = {};
+        let currentCityKey = null;
+        let plates = [];
+        let selectedPlate = "";
+        let wakeLock = null;
+        let watchId = null;
+       
+        let detectedCode = null;
+        let detectedStreetName = "";
+        let isFreeParking = false;
+        let pendingTimer = null;
+        let realPlaceName = "";
+        let currentSpeed = 0;
+
+        const TRANSLATE = {
+            SRB: {
+                locating: "📍 Lociranje...", gpsOff: "📍 UKLJUČI LOKACIJU", veh: "Vozilo", pick: "IZBOR VOZILA",
+                hist: "Istorija", about: "O nama", close: "Zatvori", home: "Početna", set: "Podešavanja",
+                histTitle: "ISTORIJA PLAĆANJA", aboutTitle: "O APLIKACIJI", noHist: "Nema zabeleženih plaćanja.",
+                activePark: "⏱️ Ističe za: ", freePark: "SLOBODNO PARKIRANJE", selectZone: "Odaberi zonu", moving: "U pokretu...",
+                noNet: "⚠️ NEMA INTERNETA",
+                airTitle: "AERODROMI - PARKING", garageTitle: "GARAŽE I RAMPE",
+                aboutTxt: "Brzo, jednostavno i automatizovano plaćanje parkinga SMS-om u svim gradovima Srbije.",
+                zones: ["Dnevna karta", "I Zona", "II Zona", "III Zona", "IV Zona", "V Zona", "VI Zona", "VII Zona", "Garaže-Rampe", "Aerodromi"]
+            },
+            ENG: {
+                locating: "📍 Locating...", gpsOff: "📍 TURN ON LOCATION", veh: "Vehicle", pick: "SELECT VEHICLE",
+                hist: "History", about: "About Us", close: "Close", home: "Home", set: "Settings",
+                histTitle: "PAYMENT HISTORY", aboutTitle: "ABOUT APP", noHist: "No payment records found.",
+                activePark: "⏱️ Expires in: ", freePark: "FREE PARKING", selectZone: "Select zone", moving: "Moving...",
+                noNet: "⚠️ NO INTERNET",
+                airTitle: "AIRPORTS - PARKING", garageTitle: "GARAGES AND RAMPS",
+                aboutTxt: "Fast, simple and automated parking payment via SMS in all cities of Serbia.",
+                zones: ["Daily ticket", "Zone I", "Zone II", "Zone III", "Zone IV", "Zone V", "Zone VI", "Zone VII", "Garages-Ramps", "Airports"]
+            }
+        };
+
+        function cyrToLat(text) {
+            if (!text) return "";
+            const map = {
+                'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Ђ': 'Đ', 'Е': 'E', 'Ж': 'Ž', 'З': 'Z', 'И': 'I',
+                'Ј': 'J', 'К': 'K', 'Л': 'L', 'Љ': 'Lj', 'М': 'M', 'Н': 'N', 'Њ': 'Nj', 'О': 'O', 'П': 'P', 'Р': 'R',
+                'С': 'S', 'Т': 'T', 'Ћ': 'Ć', 'У': 'U', 'Ф': 'F', 'Х': 'H', 'Ц': 'C', 'Ч': 'Č', 'Џ': 'Dž', 'Ш': 'Š',
+                'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'ђ': 'đ', 'е': 'e', 'ж': 'ž', 'з': 'z', 'и': 'i',
+                'ј': 'j', 'к': 'k', 'л': 'l', 'љ': 'lj', 'м': 'm', 'н': 'n', 'њ': 'nj', 'о': 'o', 'п': 'p', 'р': 'r',
+                'с': 's', 'т': 't', 'ћ': 'ć', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'č', 'џ': 'dž', 'ш': 'š'
+            };
+            return text.split('').map(char => map[char] || char).join('');
+        }
+
+        function getDistanceInMeters(lat1, lon1, lat2, lon2) {
+            const R = 6371e3;
+            const phi1 = lat1 * Math.PI / 180;
+            const phi2 = lat2 * Math.PI / 180;
+            const deltaPhi = (lat2 - lat1) * Math.PI / 180;
+            const deltaLambda = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(deltaPhi/2) * Math.sin(deltaPhi/2) + Math.cos(phi1) * Math.cos(phi2) * Math.sin(deltaLambda/2) * Math.sin(deltaLambda/2);
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        }
+
+        async function keepScreenAlive() {
+            try { if ('wakeLock' in navigator) { wakeLock = await navigator.wakeLock.request('screen'); } } catch (err) {}
+        }
+
+        async function loadParkingData() {
+            try {
+                const res = await fetch('parking_data.json?t=' + Date.now());
+                if (!res.ok) throw new Error("JSON fajl nije pronađen.");
+                parkingData = await res.json();
+            } catch (e) { parkingData = {}; }
+        }
+
+        function loadPlates() {
+            let savedData = JSON.parse(localStorage.getItem('ipi_vehicles') || '[]');
+            plates = savedData.length > 0 ? savedData : [];
+            selectedPlate = localStorage.getItem('ipi_selected_plate');
+            let valid = plates.find(p => p.plate === selectedPlate);
+           
+            if (!valid && plates.length > 0) {
+                selectedPlate = plates[0].plate;
+                localStorage.setItem('ipi_selected_plate', selectedPlate);
+            } else if (plates.length === 0) {
+                selectedPlate = "---";
+            }
+           
+            let displayName = selectedPlate;
+            if (valid && valid.name) {
+                displayName = `${valid.name} (${selectedPlate})`;
+            }
+            document.getElementById('current-plate').innerText = displayName;
+        }
+
+        function updateUI() {
+            const t = TRANSLATE[lang];
+            let isParked = currentSpeed <= 1.5;
+
+            document.getElementById('lbl-v').innerText = t.veh;
+            document.getElementById('lbl-home').innerText = t.home;
+            document.getElementById('lbl-hist').innerText = t.hist;
+            document.getElementById('lbl-about').innerText = t.about;
+            document.getElementById('lbl-set').innerText = t.set;
+            document.getElementById('lbl-pick').innerText = t.pick;
+            document.getElementById('lbl-hist-title').innerText = t.histTitle;
+            document.getElementById('lbl-about-title').innerText = t.aboutTitle;
+            document.getElementById('lbl-about-text').innerText = t.aboutTxt;
+            document.getElementById('lbl-air-title').innerText = t.airTitle;
+            document.getElementById('lbl-garage-title').innerText = t.garageTitle;
+           
+            for(let i=1; i<=5; i++) {
+                let btn = document.getElementById(`lbl-close${i}`);
+                if(btn) btn.innerText = t.close;
+            }
+
+            const locEl = document.getElementById('loc');
+            if (!navigator.onLine) {
+                locEl.innerHTML = t.noNet;
+                locEl.style.color = "var(--red)";
+            } else {
+                locEl.style.color = "var(--blue)";
+                if (locEl.innerText === TRANSLATE['SRB'].gpsOff || locEl.innerText === TRANSLATE['ENG'].gpsOff) {
+                    locEl.innerText = t.gpsOff;
+                } else if (locEl.innerText === TRANSLATE['SRB'].locating || locEl.innerText === TRANSLATE['ENG'].locating) {
+                    locEl.innerText = t.locating;
+                } else if (isFreeParking) {
+                    if (realPlaceName) {
+                        let latName = cyrToLat(realPlaceName);
+                        let cleanedPlace = latName.replace(/opština\s*|opstina\s*/gi, "").trim();
+                        locEl.innerHTML = `📍 ${cleanedPlace}<br><span class="free-badge">(${t.freePark})</span>`;
+                    } else {
+                        locEl.innerHTML = `📍 <br><span class="free-badge">(${t.freePark})</span>`;
+                    }
+                }
+            }
+
+            const streetEl = document.getElementById('street');
+            if (isFreeParking || !navigator.onLine) {
+                streetEl.innerText = "";
+            } else {
+                let statusTekst = !isParked ? t.moving : (detectedStreetName ? cyrToLat(detectedStreetName) : t.selectZone);
+                if (currentCityKey && parkingData[currentCityKey]) {
+                    let city = parkingData[currentCityKey];
+                    let radnoVreme = `<br><span style="display:block; font-size:11px; color:#8e8e93; margin-top:3px; font-weight:normal;">⏱️ ${city.hoursWorkday} | ${city.hoursWeekend}</span>`;
+                    streetEl.innerHTML = statusTekst + radnoVreme;
+                } else {
+                    streetEl.innerText = statusTekst;
+                }
+            }
+           
+            document.getElementById('btn-srb').className = `toggle-btn ${lang === 'SRB' ? 'active' : ''}`;
+            document.getElementById('btn-eng').className = `toggle-btn ${lang === 'ENG' ? 'active' : ''}`;
+            document.getElementById('btn-dark').className = `toggle-btn ${currentTheme === 'dark' ? 'active' : ''}`;
+            document.getElementById('btn-light').className = `toggle-btn ${currentTheme === 'light' ? 'active' : ''}`;
+
+            const grid = document.getElementById('grid-container');
+            grid.innerHTML = "";
+            const currentCodes = (currentCityKey && parkingData[currentCityKey]) ? parkingData[currentCityKey].codes : [];
+            const currentZones = (currentCityKey && parkingData[currentCityKey] && parkingData[currentCityKey].zones) ? parkingData[currentCityKey].zones : t.zones;
+
+            for (let i = 0; i < 10; i++) {
+                let name = currentZones[i] || t.zones[i];
+                let smsCode = currentCodes[i] || "";
+               
+                if (i === 0 && smsCode === "" && currentCityKey && parkingData[currentCityKey].dailyCode) {
+                    smsCode = parkingData[currentCityKey].dailyCode;
+                }
+
+                let displayCode = (smsCode && smsCode !== "RAMPA" && smsCode !== "AIRPORT") ? `<small style="display:block; font-size:12px; color:#8e8e93; margin-top:2px;">${smsCode}</small>` : "";
+                let card = document.createElement('div');
+               
+                if (i === 9) {
+                    card.className = "zone-card";
+                    card.innerHTML = `<b>${name}</b><small style="display:block; font-size:10px; color:#8e8e93; margin-top:2px;">BG, NI, KV</small>`;
+                    card.onclick = () => openOverlay('airport-picker');
+                } else if (i === 8) {
+                    let hasRamp = currentCodes[8] === "RAMPA";
+                    if (isFreeParking || !hasRamp) {
+                        card.className = "zone-card locked";
+                    } else {
+                        card.className = "zone-card";
+                        card.onclick = () => openGaragePicker();
+                    }
+                    card.innerHTML = `<b>${name}</b>`;
+                } else if (isFreeParking || smsCode === "" || !navigator.onLine) {
+                    card.className = "zone-card locked";
+                    card.innerHTML = `<b>${name}</b>${displayCode}`;
+                } else {
+                    let isAktivnaZona = (detectedCode && smsCode === detectedCode && isParked);
+                    if (i === 0 && detectedCode && isParked && currentCityKey && parkingData[currentCityKey]) {
+                        let city = parkingData[currentCityKey];
+                        let detectedZoneIndex = currentCodes.indexOf(detectedCode);
+                        let isAllowed = false;
+                        if (city.dailyAllowedIndexes && city.dailyAllowedIndexes.includes(detectedZoneIndex)) isAllowed = true;
+                        else if (city.dailyAllowedCodes && city.dailyAllowedCodes.includes(detectedCode)) isAllowed = true;
+                        if (isAllowed) isAktivnaZona = true;
+                    }
+
+                    card.className = `zone-card ${isAktivnaZona ? 'detected' : ''}`;
+                    if (i === 0 && currentCityKey && parkingData[currentCityKey].dailyInfo) {
+                        displayCode += `<span style="display:block; font-size:10px; color:#ff9500; margin-top:3px; font-weight:600; line-height:1.2;">${cyrToLat(parkingData[currentCityKey].dailyInfo)}</span>`;
+                    }
+
+                    card.innerHTML = `<b>${name}</b>${displayCode}`;
+                    card.onclick = () => { if (smsCode && smsCode !== "") pay(smsCode, name); };
+                }
+                grid.appendChild(card);
+            }
+        }
+
+        async function getLocation() {
+            const locEl = document.getElementById('loc');
+            if (!navigator.geolocation) { locEl.innerText = TRANSLATE[lang].gpsOff; isFreeParking = true; updateUI(); return; }
+            if (watchId) navigator.geolocation.clearWatch(watchId);
+            watchId = navigator.geolocation.watchPosition(
+                async (pos) => {
+                    currentSpeed = pos.coords.speed || 0;
+                    await matchLocation(pos.coords.latitude, pos.coords.longitude);
+                },
+                (err) => { locEl.innerText = TRANSLATE[lang].gpsOff; isFreeParking = true; updateUI(); },
+                { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+            );
+        }
+
+        async function matchLocation(lat, lon) {
+            if (Object.keys(parkingData).length === 0) { await loadParkingData(); }
+            let minDst = Infinity; let closestCity = null; detectedCode = null; detectedStreetName = ""; realPlaceName = ""; isFreeParking = true;
+           
+            for (const key in parkingData) {
+                let city = parkingData[key];
+                let d = getDistanceInMeters(lat, lon, city.lat, city.lon);
+                let cityRadius = city.city_radius ? city.city_radius : 5000;
+                if (d < cityRadius && d < minDst) { minDst = d; closestCity = key; }
+            }
+           
+            if (closestCity) {
+                currentCityKey = closestCity; isFreeParking = false;
+                let cityName = cyrToLat(parkingData[closestCity].name).replace(/opština\s*|opstina\s*/gi, "").trim();
+                document.getElementById('loc').innerText = "📍 " + cityName;
+               
+                if (parkingData[closestCity].streets) {
+                    for (const zone of parkingData[closestCity].streets) {
+                        if (getDistanceInMeters(lat, lon, zone.center_lat, zone.center_lon) <= zone.radius) {
+                            detectedCode = zone.code; detectedStreetName = cyrToLat(zone.name); break;
+                        }
+                    }
+                }
+            } else {
+                currentCityKey = null; isFreeParking = true;
+                if (currentSpeed <= 1.5 && navigator.onLine) {
+                    try {
+                        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10`);
+                        if (res.ok) { const data = await res.json(); realPlaceName = data.address.city || data.address.town || data.address.village || data.address.municipality || ""; }
+                    } catch(e) {}
+                }
+            }
+            updateUI();
+        }
+
+        function pay(smsCode, zoneName) {
+            let savedVehicles = JSON.parse(localStorage.getItem('ipi_vehicles') || '[]');
+            if (savedVehicles.length > 1) {
+                openPicker(true, smsCode, zoneName);
+            } else {
+                if (!selectedPlate || selectedPlate === "---") { openPicker(); return; }
+                executePayment(smsCode, zoneName);
+            }
+        }
+
+        function executePayment(smsCode, zoneName) {
+            const isApple = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+            let cleanPlate = selectedPlate;
+            const smsHref = `sms:${smsCode}${isApple ? '&' : '?'}body=${encodeURIComponent(cleanPlate)}`;
+            if(pendingTimer) clearTimeout(pendingTimer);
+            window.location.href = smsHref;
+           
+            pendingTimer = setTimeout(() => {
+                let cityName = parkingData[currentCityKey]?.name || "Parking";
+                let latCity = cyrToLat(cityName).replace(/opština\s*|opstina\s*/gi, "").trim();
+                saveToHistory(latCity, cyrToLat(zoneName), smsCode);
+                startTimer(3600);
+            }, 10000);
+        }
+
+        function openMap(url) { window.open(url, "_blank"); }
+
+        /* GARAŽE PICKER - Vodi vas na Google mape za garaže u trenutnom gradu */
+        function openGaragePicker() {
+            if (!currentCityKey || !parkingData[currentCityKey]) return;
+            const list = document.getElementById('garage-list'); list.innerHTML = "";
+            let cityData = parkingData[currentCityKey];
+            let cityNameLat = cyrToLat(cityData.name).replace(/opština\s*|opstina\s*/gi, "").trim();
+           
+            // Povlači garaže iz fajla, ili kreira automatsku pretragu za javne garaže u trenutnom gradu
+            let garages = cityData.garages || [{ name: "Sve garaže i javni parkinzi (" + cityNameLat + ")", query: "javna garaza parking " + cityNameLat }];
+           
+            garages.forEach(g => {
+                let div = document.createElement('div'); div.className = "v-row air-row"; div.innerHTML = `🅿️ ${cyrToLat(g.name)}`;
+                div.onclick = () => {
+                    openMap(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(g.query)}`);
+                };
+                list.appendChild(div);
+            });
+            document.getElementById('garage-picker').classList.add('open');
+        }
+
+        function startTimer(duration) {
+            const target = Date.now() + (duration * 1000);
+            localStorage.setItem('ipi_timer_target', target);
+            localStorage.removeItem('ipi_notified');
+            checkActiveTimer();
+        }
+
+        function cancelTimer() {
+            if(pendingTimer) clearTimeout(pendingTimer);
+            localStorage.removeItem('ipi_timer_target'); localStorage.removeItem('ipi_notified');
+            document.getElementById('active-timer').classList.remove('visible');
+        }
+
+        function checkActiveTimer() {
+            const timerBar = document.getElementById('active-timer');
+            const timerText = document.getElementById('timer-text');
+            const target = localStorage.getItem('ipi_timer_target');
+            if (!target) { timerBar.classList.remove('visible'); return; }
+           
+            const diff = target - Date.now();
+            if (diff > 0 && diff <= 300000 && !localStorage.getItem('ipi_notified')) {
+                if (Notification.permission === "granted") { new Notification("IPI Parking", { body: "Parking vam ističe za 5 minuta!" }); localStorage.setItem('ipi_notified', 'true'); }
+            }
+
+            if (diff <= 0) {
+                localStorage.removeItem('ipi_timer_target'); localStorage.removeItem('ipi_notified'); timerBar.classList.remove('visible');
+            } else {
+                timerBar.classList.add('visible');
+                const mins = Math.floor(diff / 60000); const secs = Math.floor((diff % 60000) / 1000);
+                timerText.innerText = TRANSLATE[lang].activePark + `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+        }
+
+        function saveToHistory(city, zone, code) {
+            let history = JSON.parse(localStorage.getItem('ipi_history') || '[]');
+            history.unshift({ city: city, zone: zone, code: code, plate: selectedPlate, date: new Date().toLocaleString() });
+            localStorage.setItem('ipi_history', JSON.stringify(history.slice(0, 20)));
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('history-list'); list.innerHTML = "";
+            let history = JSON.parse(localStorage.getItem('ipi_history') || '[]');
+            if(history.length === 0) { list.innerHTML = `<div style="text-align:center; padding:20px; color:#8e8e93;">${TRANSLATE[lang].noHist}</div>`; return; }
+            history.forEach(item => {
+                let div = document.createElement('div'); div.className = "history-item";
+                div.innerHTML = `<div><b>${item.city} - ${item.zone}</b><br><span>${item.plate} (${item.code})</span></div><span>${item.date.split(',')[0]}</span>`;
+                list.appendChild(div);
+            });
+        }
+
+        function openPicker(triggerPayment = false, smsCode = "", zoneName = "") {
+            const list = document.getElementById('v-list'); list.innerHTML = "";
+            if (plates.length === 0) {
+                list.innerHTML = `<div style="text-align:center; color:#8e8e93; padding: 20px;">Nema dodatih vozila. Idite u podešavanja.</div>`;
+            } else {
+                plates.forEach(p => {
+                    let div = document.createElement('div'); div.className = "v-row"; div.innerText = p.name ? `${p.name} (${p.plate})` : p.plate;
+                    div.onclick = () => {
+                        selectedPlate = p.plate;
+                        localStorage.setItem('ipi_selected_plate', p.plate);
+                        loadPlates();
+                        closePicker();
+                        if(triggerPayment) executePayment(smsCode, zoneName);
+                    };
+                    list.appendChild(div);
+                });
+            }
+            document.getElementById('picker').classList.add('open');
+        }
+
+        function closePicker() { document.getElementById('picker').classList.remove('open'); }
+        function openOverlay(id) { if(id === 'history-picker') renderHistory(); document.getElementById(id).classList.add('open'); }
+        function closeOverlay(id) { document.getElementById(id).classList.remove('open'); }
+        function setTheme(t) { currentTheme = t; localStorage.setItem('ipi_theme', t); document.body.className = t === 'light' ? 'light-mode' : ''; updateUI(); }
+        function setLang(l) { lang = l; localStorage.setItem('ipi_lang', l); updateUI(); checkActiveTimer(); }
+
+        window.addEventListener('online', updateUI);
+        window.addEventListener('offline', updateUI);
+        document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') keepScreenAlive(); });
+
+        if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(err => console.log('SW greška: ', err)); }); }
+
+        window.onload = async () => {
+            if (window.Notification && Notification.permission !== "granted") { Notification.requestPermission(); }
+            document.body.className = currentTheme === 'light' ? 'light-mode' : '';
+            loadPlates(); await loadParkingData(); updateUI(); getLocation(); keepScreenAlive();
+            setInterval(checkActiveTimer, 1000);
+        };
+    </script>
+</body>
+</html>

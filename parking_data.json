@@ -1,0 +1,872 @@
+{
+  "Beograd": {
+    "name": "Beograd",
+    "lat": 44.8125,
+    "lon": 20.4612,
+    "city_radius": 15000,
+    "codes": ["9114", "9111", "9112", "9113", "9118", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["A Zona", "Crvena (I)", "Žuta (II)", "Zelena (III)", "Plava (IV)", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9119",
+    "dailyInfo": "Samo Plava (IV) Zona",
+    "dailyAllowedIndexes": [4],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kneza Miloša", "code": "9112", "center_lat": 44.8050, "center_lon": 20.4570, "radius": 600},
+      {"name": "Bul. kralja Aleksandra", "code": "9112", "center_lat": 44.8055, "center_lon": 20.4740, "radius": 800},
+      {"name": "Kosančićev venac", "code": "9114", "center_lat": 44.8170, "center_lon": 20.4500, "radius": 300},
+      {"name": "Dorćol Gornji", "code": "9111", "center_lat": 44.8210, "center_lon": 20.4610, "radius": 500},
+      {"name": "Dorćol Donji", "code": "9113", "center_lat": 44.8250, "center_lon": 20.4650, "radius": 500},
+      {"name": "Novi Beograd", "code": "9118", "center_lat": 44.8140, "center_lon": 20.4150, "radius": 1200},
+      {"name": "Vračar", "code": "9113", "center_lat": 44.7980, "center_lon": 20.4690, "radius": 600}
+    ],
+    "garages": [
+      {"name": "Obilićev venac", "query": "garaza obilicev venac"},
+      {"name": "Zeleni venac", "query": "garaza zeleni venac"},
+      {"name": "Masarikova", "query": "garaza masarikova"}
+    ]
+  },
+  "NoviSad": {
+    "name": "Novi Sad",
+    "lat": 45.2671,
+    "lon": 19.8335,
+    "city_radius": 10000,
+    "codes": ["8210", "8211", "8212", "8218", "8215", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Extra", "I Zona", "II Zona", "III Zona", "IV Zona", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "8215",
+    "dailyInfo": "Samo II, III i IV Zona",
+    "dailyAllowedIndexes": [2, 3, 4],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Zmaj Jovina", "code": "8210", "center_lat": 45.2578, "center_lon": 19.8460, "radius": 250},
+      {"name": "Bul. Mihajla Pupina", "code": "8211", "center_lat": 45.2540, "center_lon": 19.8420, "radius": 400},
+      {"name": "Jevrejska", "code": "8211", "center_lat": 45.2535, "center_lon": 19.8380, "radius": 350},
+      {"name": "Bul. Oslobođenja", "code": "8212", "center_lat": 45.2550, "center_lon": 19.8350, "radius": 800},
+      {"name": "Narodnog fronta", "code": "8218", "center_lat": 45.2380, "center_lon": 19.8350, "radius": 800}
+    ],
+    "garages": [
+      {"name": "Promenada", "query": "parking garaza Promenada Novi Sad"}
+    ]
+  },
+  "Nis": {
+    "name": "Niš",
+    "lat": 43.3209,
+    "lon": 21.8957,
+    "city_radius": 8000,
+    "codes": ["9181", "9182", "9183", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Extra", "Crvena", "Plava", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9184",
+    "dailyInfo": "Samo Plava Zona",
+    "dailyAllowedIndexes": [2],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Trg Kralja Milana", "code": "9181", "center_lat": 43.3200, "center_lon": 21.8950, "radius": 300},
+      {"name": "Vožda Karađorđa", "code": "9182", "center_lat": 43.3220, "center_lon": 21.9000, "radius": 400},
+      {"name": "Obrenovićeva", "code": "9181", "center_lat": 43.3180, "center_lon": 21.8960, "radius": 350},
+      {"name": "Bulevar Nemanjića", "code": "9183", "center_lat": 43.3180, "center_lon": 21.9150, "radius": 800}
+    ],
+    "garages": [
+      {"name": "Parking Čair", "query": "parking cair nis"}
+    ]
+  },
+  "Kragujevac": {
+    "name": "Kragujevac",
+    "lat": 44.0128,
+    "lon": 20.9114,
+    "city_radius": 8000,
+    "codes": ["9341", "9342", "9343", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Crvena", "Žuta", "Zelena", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9344",
+    "dailyInfo": "Samo Žuta i Zelena",
+    "dailyAllowedIndexes": [1, 2],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kralja Aleksandra I", "code": "9341", "center_lat": 44.0120, "center_lon": 20.9120, "radius": 400},
+      {"name": "Kneza Miloša", "code": "9342", "center_lat": 44.0100, "center_lon": 20.9150, "radius": 500},
+      {"name": "Save Kovačevića", "code": "9343", "center_lat": 44.0150, "center_lon": 20.9200, "radius": 600}
+    ],
+    "garages": [
+      {"name": "Zatvoreni parkinzi", "query": "zatvoreni parking Kragujevac"}
+    ]
+  },
+  "Subotica": {
+    "name": "Subotica",
+    "lat": 46.1006,
+    "lon": 19.6644,
+    "city_radius": 8000,
+    "codes": ["9241", "9242", "9243", "9244", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Crvena", "Žuta", "Zelena", "Plava", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9249",
+    "dailyInfo": "Žuta, Zelena i Plava",
+    "dailyAllowedIndexes": [1, 2, 3],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Trg Republike", "code": "9241", "center_lat": 46.1006, "center_lon": 19.6644, "radius": 300},
+      {"name": "Somborski put", "code": "9242", "center_lat": 46.0960, "center_lon": 19.6550, "radius": 500},
+      {"name": "Aleja Maršala Tita", "code": "9243", "center_lat": 46.1050, "center_lon": 19.6600, "radius": 500}
+    ],
+    "garages": [
+      {"name": "Parking Mlečna pijaca", "query": "parking mlecna pijaca Subotica"}
+    ]
+  },
+  "Zlatibor": {
+    "name": "Zlatibor",
+    "lat": 43.7258,
+    "lon": 19.6983,
+    "city_radius": 4000,
+    "codes": ["8531", "8532", "8533", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Ekstra", "Crvena", "Plava", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "8534",
+    "dailyInfo": "Samo Plava Zona",
+    "dailyAllowedIndexes": [2],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub-Ned: 07:00 - 21:00",
+    "streets": [
+      {"name": "Centar", "code": "8531", "center_lat": 43.7250, "center_lon": 19.6980, "radius": 400},
+      {"name": "Jezero", "code": "8532", "center_lat": 43.7270, "center_lon": 19.7000, "radius": 500}
+    ],
+    "garages": [
+      {"name": "Parking kod pijace", "query": "parking pijaca Zlatibor"}
+    ]
+  },
+  "VrnjackaBanja": {
+    "name": "Vrnjačka Banja",
+    "lat": 43.6253,
+    "lon": 20.8953,
+    "city_radius": 3000,
+    "codes": ["9365", "9366", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Ekstra", "Crvena", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9367",
+    "dailyInfo": "Samo Crvena Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Promenada", "code": "9365", "center_lat": 43.6250, "center_lon": 20.8950, "radius": 500},
+      {"name": "Kruševačka", "code": "9366", "center_lat": 43.6280, "center_lon": 20.8980, "radius": 400}
+    ],
+    "garages": [
+      {"name": "Javni parking", "query": "javni parking Vrnjacka banja"}
+    ]
+  },
+  "Arandjelovac": {
+    "name": "Aranđelovac",
+    "lat": 44.3031,
+    "lon": 20.5603,
+    "city_radius": 3000,
+    "codes": ["9345", "9346", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Crvena", "Žuta", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9347",
+    "dailyInfo": "Samo Žuta Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Knjaza Miloša", "code": "9345", "center_lat": 44.3030, "center_lon": 20.5600, "radius": 450},
+      {"name": "Ilije Garašanina", "code": "9346", "center_lat": 44.3050, "center_lon": 20.5650, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Obrenovac": {
+    "name": "Obrenovac",
+    "lat": 44.6539,
+    "lon": 20.2014,
+    "city_radius": 4000,
+    "codes": ["9115", "9116", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9117",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Miloša Obrenovića", "code": "9115", "center_lat": 44.6530, "center_lon": 20.2010, "radius": 400},
+      {"name": "Vuka Karadžića", "code": "9116", "center_lat": 44.6550, "center_lon": 20.2050, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Sombor": {
+    "name": "Sombor",
+    "lat": 45.7667,
+    "lon": 19.1600,
+    "city_radius": 4000,
+    "codes": ["9250", "9251", "9252", "9253", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Extra", "I Zona", "II Zona", "III Zona", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9255",
+    "dailyInfo": "Samo II i III Zona",
+    "dailyAllowedIndexes": [2, 3],
+    "hoursWorkday": "Pon-Pet: 07:00 - 20:00",
+    "hoursWeekend": "Sub: 07:00 - 13:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kralja Petra I", "code": "9250", "center_lat": 45.7667, "center_lon": 19.1600, "radius": 300},
+      {"name": "Venac Stepe", "code": "9251", "center_lat": 45.7680, "center_lon": 19.1620, "radius": 350},
+      {"name": "Apatinski put", "code": "9252", "center_lat": 45.7620, "center_lon": 19.1500, "radius": 400}
+    ],
+    "garages": [
+      {"name": "Zatvoreni parking Sombor", "query": "zatvoreni parking Sombor"}
+    ]
+  },
+  "Zrenjanin": {
+    "name": "Zrenjanin",
+    "lat": 45.3800,
+    "lon": 20.3800,
+    "city_radius": 4500,
+    "codes": ["8230", "8231", "8232", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Crvena I", "Crvena II", "Zelena III", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "8238",
+    "dailyInfo": "Samo II i III Zona",
+    "dailyAllowedIndexes": [1, 2],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kralja Aleksandra I", "code": "8230", "center_lat": 45.3800, "center_lon": 20.3800, "radius": 350},
+      {"name": "Svetosavska", "code": "8231", "center_lat": 45.3830, "center_lon": 20.3880, "radius": 300},
+      {"name": "Nemanjina", "code": "8232", "center_lat": 45.3880, "center_lon": 20.3950, "radius": 400}
+    ],
+    "garages": [
+      {"name": "Parking Prevlaka", "query": "parking prevlaka Zrenjanin"}
+    ]
+  },
+  "Pancevo": {
+    "name": "Pančevo",
+    "lat": 44.8710,
+    "lon": 20.6410,
+    "city_radius": 4500,
+    "codes": ["9131", "9132", "9133", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "III Zona", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9139",
+    "dailyInfo": "Samo II i III Zona",
+    "dailyAllowedIndexes": [1, 2],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Vojvode R. Putnika", "code": "9131", "center_lat": 44.8710, "center_lon": 20.6410, "radius": 350},
+      {"name": "Braće Jovanovića", "code": "9132", "center_lat": 44.8680, "center_lon": 20.6450, "radius": 400},
+      {"name": "Nemanjina", "code": "9133", "center_lat": 44.8630, "center_lon": 20.6500, "radius": 400}
+    ],
+    "garages": [
+      {"name": "Parking kod Opštine", "query": "parking zgrada opstine Pancevo"}
+    ]
+  },
+  "Kikinda": {
+    "name": "Kikinda",
+    "lat": 45.8280,
+    "lon": 20.4670,
+    "city_radius": 4000,
+    "codes": ["9231", "9232", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9234",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Svetosavska", "code": "9231", "center_lat": 45.8280, "center_lon": 20.4670, "radius": 350},
+      {"name": "Nemanjina", "code": "9232", "center_lat": 45.8310, "center_lon": 20.4600, "radius": 450}
+    ],
+    "garages": []
+  },
+  "SremskaMitrovica": {
+    "name": "Sremska Mitrovica",
+    "lat": 44.9750,
+    "lon": 19.6080,
+    "city_radius": 4000,
+    "codes": ["8221", "8222", "8223", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "III Zona", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "8225",
+    "dailyInfo": "Samo II i III Zona",
+    "dailyAllowedIndexes": [1, 2],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Trg Ćire Milekića", "code": "8221", "center_lat": 44.9750, "center_lon": 19.6080, "radius": 300},
+      {"name": "Svetog Save", "code": "8222", "center_lat": 44.9720, "center_lon": 19.6120, "radius": 350},
+      {"name": "Parobrodska", "code": "8223", "center_lat": 44.9700, "center_lon": 19.6050, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Vrsac": {
+    "name": "Vršac",
+    "lat": 45.1200,
+    "lon": 21.3000,
+    "city_radius": 4000,
+    "codes": ["9135", "9136", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9137",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Dositejeva", "code": "9135", "center_lat": 45.1200, "center_lon": 21.3000, "radius": 350},
+      {"name": "Vuka Karadžića", "code": "9136", "center_lat": 45.1250, "center_lon": 21.2980, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Ruma": {
+    "name": "Ruma",
+    "lat": 45.0050,
+    "lon": 19.8200,
+    "city_radius": 4000,
+    "codes": ["9721", "9723", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona Sat", "II Zona Dan", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9729",
+    "dailyInfo": "Samo II Zona Dan",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Glavna", "code": "9721", "center_lat": 45.0050, "center_lon": 19.8200, "radius": 350},
+      {"name": "Železnička", "code": "9723", "center_lat": 45.0120, "center_lon": 19.8100, "radius": 450}
+    ],
+    "garages": []
+  },
+  "Vrbas": {
+    "name": "Vrbas",
+    "lat": 45.5683,
+    "lon": 19.6467,
+    "city_radius": 4000,
+    "codes": ["9211", "9212", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9215",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Maršala Tita", "code": "9211", "center_lat": 45.5680, "center_lon": 19.6460, "radius": 300},
+      {"name": "Gustava Krkleca", "code": "9212", "center_lat": 45.5700, "center_lon": 19.6490, "radius": 250}
+    ],
+    "garages": []
+  },
+  "BackaPalanka": {
+    "name": "Bačka Palanka",
+    "lat": 45.2500,
+    "lon": 19.3900,
+    "city_radius": 4000,
+    "codes": ["9215", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9216",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kralja Petra I", "code": "9215", "center_lat": 45.2490, "center_lon": 19.3920, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Indjija": {
+    "name": "Inđija",
+    "lat": 45.0483,
+    "lon": 20.0817,
+    "city_radius": 4000,
+    "codes": ["9221", "9222", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9223",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Vojvode Stepe", "code": "9221", "center_lat": 45.0480, "center_lon": 20.0810, "radius": 350},
+      {"name": "Cara Dušana", "code": "9222", "center_lat": 45.0500, "center_lon": 20.0850, "radius": 300}
+    ],
+    "garages": []
+  },
+  "StaraPazova": {
+    "name": "Stara Pazova",
+    "lat": 44.9850,
+    "lon": 20.1600,
+    "city_radius": 4000,
+    "codes": ["9225", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9226",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Svetosavska", "code": "9225", "center_lat": 44.9870, "center_lon": 20.1630, "radius": 300}
+    ],
+    "garages": []
+  },
+  "Becej": {
+    "name": "Bečej",
+    "lat": 45.6150,
+    "lon": 20.0483,
+    "city_radius": 3500,
+    "codes": ["9218", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9217",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Trg Oslobođenja", "code": "9218", "center_lat": 45.6150, "center_lon": 20.0480, "radius": 300}
+    ],
+    "garages": []
+  },
+  "Kula": {
+    "name": "Kula",
+    "lat": 45.6110,
+    "lon": 19.5320,
+    "city_radius": 3500,
+    "codes": ["9219", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9220",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kramera", "code": "9219", "center_lat": 45.6110, "center_lon": 19.5320, "radius": 350}
+    ],
+    "garages": []
+  },
+  "Sabac": {
+    "name": "Šabac",
+    "lat": 44.7558,
+    "lon": 19.6922,
+    "city_radius": 4500,
+    "codes": ["9151", "9152", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9155",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Gospodar Jevremova", "code": "9151", "center_lat": 44.7558, "center_lon": 19.6922, "radius": 350},
+      {"name": "Masarikova", "code": "9152", "center_lat": 44.7530, "center_lon": 19.6900, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Loznica": {
+    "name": "Loznica",
+    "lat": 44.5333,
+    "lon": 19.2222,
+    "city_radius": 4000,
+    "codes": ["9155", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9156",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Svetog Save", "code": "9155", "center_lat": 44.5330, "center_lon": 19.2220, "radius": 350}
+    ],
+    "garages": []
+  },
+  "Valjevo": {
+    "name": "Valjevo",
+    "lat": 44.2709,
+    "lon": 19.8913,
+    "city_radius": 4500,
+    "codes": ["9141", "9142", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9143",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Karađorđeva", "code": "9141", "center_lat": 44.2700, "center_lon": 19.8910, "radius": 400},
+      {"name": "Pantićeva", "code": "9142", "center_lat": 44.2680, "center_lon": 19.8880, "radius": 450}
+    ],
+    "garages": []
+  },
+  "Uzice": {
+    "name": "Užice",
+    "lat": 43.8511,
+    "lon": 19.8443,
+    "city_radius": 4500,
+    "codes": ["9311", "9312", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9313",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Dimitrija Tucovića", "code": "9311", "center_lat": 43.8510, "center_lon": 19.8440, "radius": 350},
+      {"name": "Jug Bogdanova", "code": "9312", "center_lat": 43.8540, "center_lon": 19.8480, "radius": 400}
+    ],
+    "garages": [
+      {"name": "Javna garaža Užice", "query": "javna garaza uzice"}
+    ]
+  },
+  "Cacak": {
+    "name": "Čačak",
+    "lat": 43.8909,
+    "lon": 20.3475,
+    "city_radius": 5000,
+    "codes": ["9321", "9322", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Ekstra", "I Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9323",
+    "dailyInfo": "Samo I Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kneza Miloša", "code": "9321", "center_lat": 43.8900, "center_lon": 20.3470, "radius": 300},
+      {"name": "Vojvode Stepe", "code": "9322", "center_lat": 43.8870, "center_lon": 20.3500, "radius": 450}
+    ],
+    "garages": []
+  },
+  "GornjiMilanovac": {
+    "name": "G. Milanovac",
+    "lat": 44.0300,
+    "lon": 20.4500,
+    "city_radius": 4000,
+    "codes": ["9325", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9326",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kneza Aleksandra", "code": "9325", "center_lat": 44.0300, "center_lon": 20.4500, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Kraljevo": {
+    "name": "Kraljevo",
+    "lat": 43.7246,
+    "lon": 20.6875,
+    "city_radius": 4500,
+    "codes": ["9361", "9362", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Crvena", "Žuta", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9363",
+    "dailyInfo": "Samo Žuta Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Omladinska", "code": "9361", "center_lat": 43.7240, "center_lon": 20.6870, "radius": 300},
+      {"name": "Cara Dušana", "code": "9362", "center_lat": 43.7220, "center_lon": 20.6850, "radius": 450}
+    ],
+    "garages": []
+  },
+  "Krusevac": {
+    "name": "Kruševac",
+    "lat": 43.5828,
+    "lon": 21.3256,
+    "city_radius": 4500,
+    "codes": ["9371", "9372", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9373",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Vidovdanska", "code": "9371", "center_lat": 43.5820, "center_lon": 21.3250, "radius": 300},
+      {"name": "Balkanska", "code": "9372", "center_lat": 43.5850, "center_lon": 21.3220, "radius": 450}
+    ],
+    "garages": []
+  },
+  "Jagodina": {
+    "name": "Jagodina",
+    "lat": 43.9806,
+    "lon": 21.2619,
+    "city_radius": 4500,
+    "codes": ["9351", "9352", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9353",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kneginje Milice", "code": "9351", "center_lat": 43.9800, "center_lon": 21.2610, "radius": 350},
+      {"name": "Kneza Lazara", "code": "9352", "center_lat": 43.9780, "center_lon": 21.2580, "radius": 450}
+    ],
+    "garages": []
+  },
+  "Paracin": {
+    "name": "Paraćin",
+    "lat": 43.8667,
+    "lon": 21.4167,
+    "city_radius": 4000,
+    "codes": ["9355", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9357",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kralja Petra I", "code": "9355", "center_lat": 43.8660, "center_lon": 21.4160, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Cuprija": {
+    "name": "Ćuprija",
+    "lat": 43.9333,
+    "lon": 21.3667,
+    "city_radius": 4000,
+    "codes": ["9356", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9358",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Cara Lazara", "code": "9356", "center_lat": 43.9330, "center_lon": 21.3660, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Leskovac": {
+    "name": "Leskovac",
+    "lat": 42.9943,
+    "lon": 21.9443,
+    "city_radius": 4500,
+    "codes": ["9161", "9162", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9163",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Bulevar Oslobođenja", "code": "9161", "center_lat": 42.9940, "center_lon": 21.9440, "radius": 450},
+      {"name": "Koste Stamenkovića", "code": "9162", "center_lat": 42.9960, "center_lon": 21.9460, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Vranje": {
+    "name": "Vranje",
+    "lat": 42.5539,
+    "lon": 21.9025,
+    "city_radius": 4500,
+    "codes": ["9171", "9172", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9173",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kralja Stefana Prvovenčanog", "code": "9171", "center_lat": 42.5539, "center_lon": 21.9025, "radius": 400},
+      {"name": "Cara Dušana", "code": "9172", "center_lat": 42.5560, "center_lon": 21.9050, "radius": 350}
+    ],
+    "garages": []
+  },
+  "Pozarevac": {
+    "name": "Požarevac",
+    "lat": 44.6203,
+    "lon": 21.1895,
+    "city_radius": 4500,
+    "codes": ["9121", "9122", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9123",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Tabačka čaršija", "code": "9121", "center_lat": 44.6200, "center_lon": 21.1890, "radius": 350},
+      {"name": "Trg oslobođenja", "code": "9122", "center_lat": 44.6220, "center_lon": 21.1920, "radius": 300}
+    ],
+    "garages": []
+  },
+  "Pirot": {
+    "name": "Pirot",
+    "lat": 43.1557,
+    "lon": 22.5855,
+    "city_radius": 4000,
+    "codes": ["9101", "9102", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9103",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Srpskih vladara", "code": "9101", "center_lat": 43.1550, "center_lon": 22.5850, "radius": 400},
+      {"name": "Knjaza Miloša", "code": "9102", "center_lat": 43.1580, "center_lon": 22.5880, "radius": 350}
+    ],
+    "garages": []
+  },
+  "Prokuplje": {
+    "name": "Prokuplje",
+    "lat": 43.2358,
+    "lon": 21.5867,
+    "city_radius": 4000,
+    "codes": ["9271", "9272", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9273",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Jug Bogdanova", "code": "9271", "center_lat": 43.2350, "center_lon": 21.5860, "radius": 350}
+    ],
+    "garages": []
+  },
+  "Bor": {
+    "name": "Bor",
+    "lat": 44.0722,
+    "lon": 22.1033,
+    "city_radius": 4000,
+    "codes": ["9301", "9302", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9303",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Moše Pijade", "code": "9301", "center_lat": 44.0720, "center_lon": 22.1030, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Zajecar": {
+    "name": "Zaječar",
+    "lat": 43.9048,
+    "lon": 22.2740,
+    "city_radius": 4000,
+    "codes": ["9191", "9192", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9193",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Nikole Pašića", "code": "9191", "center_lat": 43.9040, "center_lon": 22.2740, "radius": 350}
+    ],
+    "garages": []
+  },
+  "Prijepolje": {
+    "name": "Prijepolje",
+    "lat": 43.3850,
+    "lon": 19.6580,
+    "city_radius": 3500,
+    "codes": ["9331", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9332",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Valterova", "code": "9331", "center_lat": 43.3850, "center_lon": 19.6580, "radius": 450}
+    ],
+    "garages": []
+  },
+  "Smederevo": {
+    "name": "Smederevo",
+    "lat": 44.6622,
+    "lon": 20.9258,
+    "city_radius": 4500,
+    "codes": ["9261", "9262", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9263",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Karađorđeva", "code": "9261", "center_lat": 44.6620, "center_lon": 20.9250, "radius": 400},
+      {"name": "Despota Đurđa", "code": "9262", "center_lat": 44.6650, "center_lon": 20.9280, "radius": 350}
+    ],
+    "garages": []
+  },
+  "Trstenik": {
+    "name": "Trstenik",
+    "lat": 43.6167,
+    "lon": 21.0167,
+    "city_radius": 3500,
+    "codes": ["9375", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9376",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Cara Dušana", "code": "9375", "center_lat": 43.6160, "center_lon": 21.0160, "radius": 400}
+    ],
+    "garages": []
+  },
+  "SmederevskaPalanka": {
+    "name": "S. Palanka",
+    "lat": 44.3667,
+    "lon": 20.9500,
+    "city_radius": 4000,
+    "codes": ["9265", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9266",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Prvog srpskog ustanka", "code": "9265", "center_lat": 44.3660, "center_lon": 20.9500, "radius": 400}
+    ],
+    "garages": []
+  },
+  "NoviPazar": {
+    "name": "Novi Pazar",
+    "lat": 43.1422,
+    "lon": 20.5186,
+    "city_radius": 4500,
+    "codes": ["9201", "9202", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9203",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Stevana Nemanje", "code": "9201", "center_lat": 43.1420, "center_lon": 20.5180, "radius": 450},
+      {"name": "28. novembra", "code": "9202", "center_lat": 43.1450, "center_lon": 20.5200, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Lazarevac": {
+    "name": "Lazarevac",
+    "lat": 44.3833,
+    "lon": 20.2667,
+    "city_radius": 4000,
+    "codes": ["9115", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9117",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Karađorđeva", "code": "9115", "center_lat": 44.3830, "center_lon": 20.2660, "radius": 400}
+    ],
+    "garages": []
+  },
+  "Mladenovac": {
+    "name": "Mladenovac",
+    "lat": 44.4444,
+    "lon": 20.6944,
+    "city_radius": 4000,
+    "codes": ["9116", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9117",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kralja Petra Prvog", "code": "9116", "center_lat": 44.4440, "center_lon": 20.6940, "radius": 400}
+    ],
+    "garages": []
+  }
+}

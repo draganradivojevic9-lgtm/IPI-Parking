@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#0b0b0c">
+    <title>Podešavanja - IPI Parking</title>
+    <style>
+        :root {
+            --bg: #0b0b0c; --card-gray: #1c1c1e; --text: #ffffff;
+            --green: #32d74b; --blue: #0a84ff; --red: #ff453a;
+            --nav-bg: #161618; --border: #2c2c2e; --input-bg: #1c1c1e;
+        }
+        body.light-mode {
+            --bg: #f2f2f7; --card-gray: #ffffff; --text: #000000;
+            --nav-bg: #ffffff; --border: #d1d1d6; --input-bg: #e5e5ea;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; }
+       
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; }
+       
+        .app-container { max-width: 430px; margin: 0 auto; width: 100%; position: relative; min-height: 100vh; padding-bottom: 80px; }
+       
+        .top-bar { display: flex; justify-content: center; align-items: center; padding: 20px 16px 10px 16px; }
+        .page-title { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
+        .scrollable-content { padding: 10px 16px 20px 16px; }
+        .input-label { font-size: 12px; color: #8e8e93; margin-bottom: 6px; margin-left: 4px; }
+        .vehicle-row { display: flex; align-items: center; margin-bottom: 16px; }
+        .inputs-wrapper { display: flex; flex: 1; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+        .inputs-wrapper input { flex: 1; background: transparent; border: none; color: var(--text); padding: 14px 12px; font-size: 16px; outline: none; width: 50%; user-select: auto; }
+        .inputs-wrapper input::placeholder { color: #636366; }
+        .divider { width: 1px; background: var(--border); }
+        .delete-btn { background: var(--input-bg); border: 1px solid var(--border); color: var(--red); border-radius: 50%; width: 38px; height: 38px; margin-left: 10px; display: flex; justify-content: center; align-items: center; font-size: 14px; cursor: pointer; flex-shrink: 0; transition: 0.2s; }
+        .delete-btn:active { opacity: 0.6; }
+        .save-btn { background: var(--green); color: #000; width: 100%; padding: 16px; border-radius: 12px; border: none; font-size: 16px; font-weight: 700; margin-top: 10px; cursor: pointer; text-transform: uppercase; transition: 0.2s; letter-spacing: 0.5px; }
+        .save-btn:active { transform: scale(0.97); opacity: 0.9; }
+       
+        .bottom-container { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: var(--nav-bg); z-index: 100; border-top: 1px solid var(--border); padding-bottom: env(safe-area-inset-bottom, 5px); }
+        .nav { height: 60px; display: flex; justify-content: space-around; align-items: center; }
+        .nav-item { text-align: center; color: #8e8e93; font-size: 11px; cursor: pointer; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+        .nav-item.active { color: var(--blue); }
+        .nav-item span { font-size: 20px; margin-bottom: 2px; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="top-bar"><div class="page-title" id="page-title">Vehicle Settings</div></div>
+        <div class="scrollable-content" id="vehicles-container"></div>
+        <div class="bottom-container">
+            <nav class="nav">
+                <div class="nav-item" onclick="window.location.href='index.html'"><span>🏠</span><div id="nav-home">Početna</div></div>
+                <div class="nav-item" onclick="window.location.href='index.html?open=history'"><span>📜</span><div id="nav-hist">Istorija</div></div>
+                <div class="nav-item" onclick="window.location.href='index.html?open=about'"><span>ℹ️</span><div id="nav-about">O nama</div></div>
+                <div class="nav-item active"><span>⚙️</span><div id="nav-set">Podešavanja</div></div>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        const TRANSLATE = {
+            SRB: { title: "Podešavanja vozila", labels: "Ime vozila | Tablica", namePh: "npr. GOLF", platePh: "npr. BG123AB", saveBtn: "SAČUVAJ", savedBtn: "SAČUVANO ✔", home: "Početna", hist: "Istorija", about: "O nama", set: "Podešavanja" },
+            ENG: { title: "Vehicle Settings", labels: "Vehicle Name | Plate", namePh: "e.g. GOLF", platePh: "e.g. BG123AB", saveBtn: "SAVE", savedBtn: "SAVED ✔", home: "Home", hist: "History", about: "About Us", set: "Settings" }
+        };
+
+        let lang = localStorage.getItem('ipi_lang') || 'SRB';
+        let currentTheme = localStorage.getItem('ipi_theme') || 'dark';
+
+        function init() {
+            document.body.className = currentTheme === 'light' ? 'light-mode' : '';
+            renderInputs(); applyTranslations(); loadData();
+        }
+
+        function applyTranslations() {
+            const t = TRANSLATE[lang];
+            document.getElementById('page-title').innerText = t.title;
+            document.getElementById('nav-home').innerText = t.home;
+            document.getElementById('nav-hist').innerText = t.hist;
+            document.getElementById('nav-about').innerText = t.about;
+            document.getElementById('nav-set').innerText = t.set;
+        }
+
+        function renderInputs() {
+            const container = document.getElementById('vehicles-container');
+            const t = TRANSLATE[lang];
+            let html = "";
+            for(let i=1; i<=5; i++) {
+                html += `<div class="input-label">${t.labels}</div>
+                <div class="vehicle-row">
+                    <div class="inputs-wrapper">
+                        <input type="text" id="v-name-${i}" placeholder="${t.namePh}" oninput="saveData(false)">
+                        <div class="divider"></div>
+                        <input type="text" id="v-plate-${i}" placeholder="${t.platePh}" style="text-transform: uppercase;" oninput="saveData(false)">
+                    </div>
+                    <div class="delete-btn" onclick="clearRow(${i})">❌</div>
+                </div>`;
+            }
+            html += `<button class="save-btn" id="save-btn" onclick="saveData(true)">${t.saveBtn}</button>`;
+            container.innerHTML = html;
+        }
+
+        function loadData() {
+            let savedData = JSON.parse(localStorage.getItem('ipi_vehicles') || '[]');
+            for(let i=0; i<5; i++) {
+                if(savedData[i]) {
+                    document.getElementById(`v-name-${i+1}`).value = savedData[i].name || '';
+                    document.getElementById(`v-plate-${i+1}`).value = savedData[i].plate || '';
+                }
+            }
+        }
+
+        function clearRow(index) {
+            document.getElementById(`v-name-${index}`).value = '';
+            document.getElementById(`v-plate-${index}`).value = '';
+            saveData(false);
+        }
+
+        function saveData(showFeedback = true) {
+            let vehicles = [];
+            for(let i=1; i<=5; i++) {
+                let nameEl = document.getElementById(`v-name-${i}`);
+                let plateEl = document.getElementById(`v-plate-${i}`);
+                if(!nameEl || !plateEl) continue;
+
+                let nameVal = nameEl.value.trim();
+                let plateVal = plateEl.value.trim().toUpperCase().replace(/\s/g, '');
+               
+                if(nameVal !== '' || plateVal !== '') {
+                    vehicles.push({ name: nameVal, plate: plateVal });
+                }
+            }
+           
+            localStorage.setItem('ipi_vehicles', JSON.stringify(vehicles));
+           
+            // Logika "Pancir" - uvek nađi bar jedno validno vozilo ako postoji
+            if(vehicles.length > 0) {
+                let currentSel = localStorage.getItem('ipi_selected_plate');
+                let validSelection = vehicles.find(v => v.plate === currentSel);
+                if(!validSelection) {
+                    localStorage.setItem('ipi_selected_plate', vehicles[0].plate);
+                }
+            } else {
+                localStorage.setItem('ipi_selected_plate', '---');
+            }
+
+            if(showFeedback) {
+                const btn = document.getElementById('save-btn');
+                btn.innerText = TRANSLATE[lang].savedBtn;
+                btn.style.background = "#28a745";
+                setTimeout(() => { btn.innerText = TRANSLATE[lang].saveBtn; btn.style.background = "var(--green)"; }, 1500);
+            }
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
