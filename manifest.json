@@ -1,22 +1,16 @@
 {
-  "short_name": "Parking App",
-  "name": "IPI Parking Pro - Pametni Asistent",
+  "name": "IPI Parking",
+  "short_name": "IPI",
+  "description": "Najbrže plaćanje parkinga",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#2c3e50",
+  "theme_color": "#2c3e50",
   "icons": [
     {
-      "src": "icons/icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "ikonica-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
     }
-  ],
-  "start_url": "index.html",
-  "background_color": "#0b0b0c",
-  "display": "standalone",
-  "scope": "./",
-  "theme_color": "#0b0b0c",
-  "description": "Najbrži način da pronađete parking i platite kartu."
-}
+  ]
+} 
