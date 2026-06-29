@@ -126,6 +126,7 @@
         <div class="main-content" id="grid-container"></div>
        
         <div class="bottom-container">
+            <div id="prikaz-kredita" style="text-align: center; padding: 10px; font-size: 14px; font-weight: bold; color: var(--green);">Stanje kredita: 500 RSD</div>
             <div id="active-timer" class="timer-bar">
                 <span id="timer-text"></span>
                 <span class="cancel-timer" onclick="cancelTimer()">X</span>
@@ -500,7 +501,10 @@
         function checkActiveTimer() {
             const timerBar = document.getElementById('active-timer');
             const timerText = document.getElementById('timer-text');
-            const target = localStorage.getItem('ipi_timer_target');
+            
+             const target = localStorage.getItem('ipi_timer_target');
+
+
             if (!target) { timerBar.classList.remove('visible'); return; }
            
             const diff = target - Date.now();
