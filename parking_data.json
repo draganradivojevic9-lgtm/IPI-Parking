@@ -195,7 +195,7 @@
     "lon": 19.1600,
     "city_radius": 4000,
     "codes": ["9250", "9251", "9252", "9253", "", "", "", "", "RAMPA", "AIRPORT"],
-    "zones": ["Extra", "I Zona", "II Zona", "III Zona", "", "", "", "", "Garaže", "Aerodromi"],
+    "zones": ["Dnevna Karta", "I Zona", "II Zona", "III Zona", "", "", "", "", "Garaže", "Aerodromi"],
     "dailyCode": "9255",
     "dailyInfo": "Samo II i III Zona",
     "dailyAllowedIndexes": [2, 3],

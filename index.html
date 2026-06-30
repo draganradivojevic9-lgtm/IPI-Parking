@@ -125,12 +125,16 @@
        
         <div class="main-content" id="grid-container"></div>
        
-        <div class="bottom-container">
-            <div id="prikaz-kredita" style="text-align: center; padding: 10px; font-size: 14px; font-weight: bold; color: var(--green);">Stanje kredita: 500 RSD</div>
+                      <div class="bottom-container">
+            <div id="prikaz-kredita" style="text-align: center; padding: 10px; font-size: 14px; font-weight: bold; color: var(--green);">Stanje kredita: . . .</div>
+    
+            <div id="radno-vreme" style="text-align: center; padding: 5px 10px; font-size: 12px; color: #8e8e93; display: block;"></div>
+           
             <div id="active-timer" class="timer-bar">
                 <span id="timer-text"></span>
                 <span class="cancel-timer" onclick="cancelTimer()">X</span>
             </div>
+           
             <nav class="nav">
                 <div class="nav-item active" onclick="location.reload()"><span>🏠</span><div id="lbl-home">Početna</div></div>
                 <div class="nav-item" onclick="openOverlay('history-picker')"><span>📜</span><div id="lbl-hist">Istorija</div></div>
@@ -171,7 +175,7 @@
             <div id="lbl-about-title" class="picker-header">O APLIKACIJI</div>
             <div class="picker-list" style="color: var(--text); font-size: 14px; line-height: 1.5; padding: 10px; text-align: center;">
                 <p style="font-weight: bold; font-size: 18px; color: var(--green); margin-bottom: 10px;">IPI Parking </p>
-                <p id="lbl-about-text">IPI PARKING je vas inteligentni saputnik za bryo placanje parkiranja sirom Srbije.</p>
+                <p id="lbl-about-text">IPI PARKING je vas inteligentni saputnik za brzo placanje parkiranja širom Srbije.</p>
                 <p style="margin-top: 20px; color: #8e8e93; font-size: 12px;">Verzija 1.0 © 2026</p>
             </div>
             <button onclick="closeOverlay('about-picker')" id="lbl-close3" class="close-btn">Zatvori</button>
@@ -315,17 +319,21 @@
                 }
             }
 
-            const streetEl = document.getElementById('street');
+                                 const streetEl = document.getElementById('street');
+            const radnoVremeEl = document.getElementById('radno-vreme'); 
             if (isFreeParking || !navigator.onLine) {
                 streetEl.innerText = "";
+                if (radnoVremeEl) radnoVremeEl.innerText = "";
             } else {
                 let statusTekst = !isParked ? t.moving : (detectedStreetName ? cyrToLat(detectedStreetName) : t.selectZone);
-                if (currentCityKey && parkingData[currentCityKey]) {
-                    let city = parkingData[currentCityKey];
-                    let radnoVreme = `<br><span style="display:block; font-size:11px; color:#8e8e93; margin-top:3px; font-weight:normal;">⏱️ ${city.hoursWorkday} | ${city.hoursWeekend}</span>`;
-                    streetEl.innerHTML = statusTekst + radnoVreme;
-                } else {
-                    streetEl.innerText = statusTekst;
+                streetEl.innerText = statusTekst; 
+                if (radnoVremeEl) {
+                    if (currentCityKey && parkingData[currentCityKey]) {
+                        let city = parkingData[currentCityKey];
+                        radnoVremeEl.innerHTML = `⏱️ ${city.hoursWorkday} | ${city.hoursWeekend}`;
+                    } else {
+                        radnoVremeEl.innerText = "";
+                    }
                 }
             }
            
@@ -340,7 +348,7 @@
             const currentZones = (currentCityKey && parkingData[currentCityKey] && parkingData[currentCityKey].zones) ? parkingData[currentCityKey].zones : t.zones;
 
             for (let i = 0; i < 10; i++) {
-                let name = currentZones[i] || t.zones[i];
+                let name = (i === 0) ? t.zones[0] : (currentZones[i] || t.zones[i]);
                 let smsCode = currentCodes[i] || "";
                
                 if (i === 0 && smsCode === "" && currentCityKey && parkingData[currentCityKey].dailyCode) {
@@ -465,14 +473,12 @@
 
         function openMap(url) { window.open(url, "_blank"); }
 
-        /* GARAŽE PICKER - Vodi vas na Google mape za garaže u trenutnom gradu */
         function openGaragePicker() {
             if (!currentCityKey || !parkingData[currentCityKey]) return;
             const list = document.getElementById('garage-list'); list.innerHTML = "";
             let cityData = parkingData[currentCityKey];
             let cityNameLat = cyrToLat(cityData.name).replace(/opština\s*|opstina\s*/gi, "").trim();
            
-            // Povlači garaže iz fajla, ili kreira automatsku pretragu za javne garaže u trenutnom gradu
             let garages = cityData.garages || [{ name: "Sve garaže i javni parkinzi (" + cityNameLat + ")", query: "javna garaza parking " + cityNameLat }];
            
             garages.forEach(g => {
@@ -498,14 +504,18 @@
             document.getElementById('active-timer').classList.remove('visible');
         }
 
-        function checkActiveTimer() {
+               function checkActiveTimer() {
             const timerBar = document.getElementById('active-timer');
             const timerText = document.getElementById('timer-text');
+            const radnoVremeEl = document.getElementById('radno-vreme');
             
-             const target = localStorage.getItem('ipi_timer_target');
+            const target = localStorage.getItem('ipi_timer_target');
 
-
-            if (!target) { timerBar.classList.remove('visible'); return; }
+            if (!target) {
+                timerBar.classList.remove('visible');
+                if (radnoVremeEl) radnoVremeEl.style.display = 'block'; // Prikazuje radno vreme
+                return;
+            }
            
             const diff = target - Date.now();
             if (diff > 0 && diff <= 300000 && !localStorage.getItem('ipi_notified')) {
@@ -513,9 +523,14 @@
             }
 
             if (diff <= 0) {
-                localStorage.removeItem('ipi_timer_target'); localStorage.removeItem('ipi_notified'); timerBar.classList.remove('visible');
+                localStorage.removeItem('ipi_timer_target');
+                localStorage.removeItem('ipi_notified');
+                timerBar.classList.remove('visible');
+                if (radnoVremeEl) radnoVremeEl.style.display = 'block'; 
             } else {
                 timerBar.classList.add('visible');
+                if (radnoVremeEl) radnoVremeEl.style.display = 'none'; 
+               
                 const mins = Math.floor(diff / 60000); const secs = Math.floor((diff % 60000) / 1000);
                 timerText.innerText = TRANSLATE[lang].activePark + `${mins}:${secs < 10 ? '0' : ''}${secs}`;
             }
