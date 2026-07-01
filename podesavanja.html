@@ -36,7 +36,6 @@
         .delete-btn { background: var(--input-bg); border: 1px solid var(--border); color: var(--red); border-radius: 50%; width: 32px; height: 32px; margin-left: 10px; display: flex; justify-content: center; align-items: center; font-size: 12px; cursor: pointer; flex-shrink: 0; transition: 0.2s; }
         .delete-btn:active { opacity: 0.6; transform: scale(0.9); }
        
-        /* GRUPA ISPOD VOZILA */
         .action-group { margin-top: 15px; }
        
         .save-btn { background: var(--green); color: #000; width: 100%; padding: 12px; border-radius: 12px; border: none; font-size: 15px; font-weight: 700; cursor: pointer; text-transform: uppercase; transition: 0.2s; letter-spacing: 0.5px; }
@@ -58,7 +57,6 @@
         .sheet-handle { width: 40px; height: 5px; background: #8e8e93; border-radius: 3px; margin: 0 auto 15px auto; opacity: 0.5; }
         .sheet-title { text-align: center; font-size: 18px; font-weight: 700; margin-bottom: 25px; color: var(--text); }
        
-        /* NOVI STILOVI ZA QR KOD I RAČUN */
         .qr-container { text-align: center; margin-bottom: 25px; }
         .qr-box { background: #ffffff; padding: 15px; border-radius: 16px; display: inline-block; margin-bottom: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .qr-box img { width: 180px; height: 180px; display: block; }
@@ -71,7 +69,11 @@
         .acc-row span { color: #8e8e93; font-size: 13px; }
         .acc-row strong { color: var(--text); font-weight: 600; text-align: right; }
 
-        /* DONJA NAVIGACIJA */
+        /* NOVE KARTICE ZA IZNOS */
+        .amount-row { display: flex; gap: 10px; margin-bottom: 15px; }
+        .amount-card { flex: 1; padding: 14px; background: var(--input-bg); border: 1px solid var(--border); border-radius: 12px; text-align: center; font-weight: 700; cursor: pointer; transition: 0.2s; color: var(--text); }
+        .amount-card.active { border-color: var(--green); background: #1a2e1d; }
+
         .bottom-container { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: var(--nav-bg); z-index: 100; border-top: 1px solid var(--border); padding-bottom: env(safe-area-inset-bottom, 5px); }
         .nav { height: 60px; display: flex; justify-content: space-around; align-items: center; }
         .nav-item { text-align: center; color: #8e8e93; font-size: 11px; cursor: pointer; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
@@ -99,7 +101,6 @@
         </div>
     </div>
 
-    <!-- PICKER (MODAL) ODOZDO SA QR KODOM -->
     <div class="modal-overlay" id="picker-overlay" onclick="closePicker()"></div>
     <div class="bottom-sheet" id="picker-sheet">
         <div class="sheet-handle"></div>
@@ -107,7 +108,6 @@
        
         <div class="qr-container">
             <div class="qr-box">
-                <!-- Privremeni QR kod slika -->
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=IPI+Parking+Primer" alt="IPS QR">
             </div>
             <div class="qr-instruction" id="qr-inst">Skenirajte IPS QR kod aplikacijom vaše banke.</div>
@@ -126,6 +126,20 @@
                 <span id="lbl-ref">Poziv na broj:</span>
                 <strong id="dynamic-ref">---</strong>
             </div>
+           
+            <div class="amount-row" style="margin-top: 15px;">
+                <div class="amount-card" id="card-500" onclick="selectAmount(500)">500 RSD</div>
+                <div class="amount-card" id="card-1000" onclick="selectAmount(1000)">1000 RSD</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; padding: 0 5px;">
+            <label style="display: flex; align-items: center; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--text);">
+                <input type="checkbox" id="auto-topup" style="width: 18px; height: 18px; margin-right: 10px; accent-color: var(--green);">
+                <span id="lbl-auto">Automatska dopuna (< 200 RSD)</span>
+            </label>
+            <p id="security-txt" style="font-size: 12px; color: #8e8e93; margin-top: 15px; line-height: 1.4; text-align: center;">
+            </p>
         </div>
     </div>
 
@@ -135,13 +149,17 @@
                 title: "Podešavanja vozila", labels: "Ime vozila | Tablica", namePh: "npr. GOLF", platePh: "npr. BG123AB",
                 saveBtn: "SAČUVAJ", savedBtn: "SAČUVANO ✔", home: "Početna", hist: "Istorija", about: "O nama", set: "Podešavanja",
                 topupBtn: "Dopuni kredit", pickerTitle: "Uplata kredita",
-                qrInst: "Skenirajte IPS QR kod aplikacijom vaše banke.", rec: "Primalac:", acc: "Broj računa:", ref: "Poziv na broj:"
+                qrInst: "Skenirajte IPS QR kod aplikacijom vaše banke.", rec: "Primalac:", acc: "Broj računa:", ref: "Poziv na broj:",
+                auto: "Automatska dopuna (< 200 RSD)",
+                security: "Plaćanje je potpuno bezbedno. Sve transakcije procesuira <b>PaySpot</b>, vodeći licencirani platni servis pod nadzorom Narodne banke Srbije. Mi nemamo uvid u podatke vaše kartice, niti ih čuvamo na našim serverima. Automatsku dopunu možete isključiti u bilo kom trenutku. Automatska dopuna radi po principu da se, kada kredit padne ispod 200 RSD, automatski dopunjuje sa 500 RSD."
             },
             ENG: {
                 title: "Vehicle Settings", labels: "Vehicle Name | Plate", namePh: "e.g. GOLF", platePh: "e.g. BG123AB",
                 saveBtn: "SAVE", savedBtn: "SAVED ✔", home: "Home", hist: "History", about: "About Us", set: "Settings",
                 topupBtn: "Top Up Credit", pickerTitle: "Top Up Credit",
-                qrInst: "Scan the IPS QR code with your mobile banking app.", rec: "Recipient:", acc: "Account No:", ref: "Reference No:"
+                qrInst: "Scan the IPS QR code with your mobile banking app.", rec: "Recipient:", acc: "Account No:", ref: "Reference No:",
+                auto: "Auto-top up (< 200 RSD)",
+                security: "Payment is completely secure. All transactions are processed by <b>PaySpot</b>, a leading licensed payment service supervised by the National Bank of Serbia. We do not have access to your card details, nor do we store them. You can disable auto-top up at any time. Auto-top up works on the principle that when your credit falls below 200 RSD, it is automatically topped up with 500 RSD."
             }
         };
 
@@ -163,12 +181,21 @@
             document.getElementById('nav-about').innerText = t.about;
             document.getElementById('nav-set').innerText = t.set;
            
-            // Prevodi za QR Meni
             document.getElementById('picker-title').innerText = t.pickerTitle;
             document.getElementById('qr-inst').innerText = t.qrInst;
             document.getElementById('lbl-rec').innerText = t.rec;
             document.getElementById('lbl-acc').innerText = t.acc;
             document.getElementById('lbl-ref').innerText = t.ref;
+            document.getElementById('lbl-auto').innerText = t.auto;
+            document.getElementById('security-txt').innerHTML = t.security;
+        }
+
+        // Nova funkcija za biranje iznosa
+        function selectAmount(amount) {
+            document.getElementById('card-500').classList.remove('active');
+            document.getElementById('card-1000').classList.remove('active');
+            document.getElementById('card-' + amount).classList.add('active');
+            // Ovde kasnije dodajemo logiku za generisanje specifičnog QR koda
         }
 
         function renderInputs() {
@@ -252,7 +279,6 @@
         }
 
         function openPicker() {
-            // Povlačimo izabranu tablicu iz memorije za "Poziv na broj"
             let izabranaTablica = localStorage.getItem('ipi_selected_plate') || '---';
             document.getElementById('dynamic-ref').innerText = izabranaTablica;
 
