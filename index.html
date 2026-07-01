@@ -329,9 +329,9 @@
                     if (realPlaceName) {
                         let latName = cyrToLat(realPlaceName);
                         let cleanedPlace = latName.replace(/opština\s*|opstina\s*/gi, "").trim();
-                        locEl.innerHTML = `📍 ${cleanedPlace}<br><span class="free-badge">(${t.freePark})</span>`;
+                        locEl.innerHTML = `📍 <span style="visibility:hidden;">📍</span><br><span class="free-badge">(${t.freePark})</span>`;
                     } else {
-                        locEl.innerHTML = `📍 <br><span class="free-badge">(${t.freePark})</span>`;
+                        locEl.innerHTML = `📍 ${cleanedPlace} <span style="visibility:hidden;">📍</span><br><span class="free-badge">(${t.freePark})</span>`;
                     }
                 }
             }
@@ -444,7 +444,7 @@
             if (closestCity) {
                 currentCityKey = closestCity; isFreeParking = false;
                 let cityName = cyrToLat(parkingData[closestCity].name).replace(/opština\s*|opstina\s*/gi, "").trim();
-                document.getElementById('loc').innerText = "📍 " + cityName;
+                document.getElementById('loc').innerHTML = "📍 " + cityName + " <span style='visibility:hidden;'>📍</span>";
                
                            if (parkingData[closestCity].streets) {
                     let matches = [];
