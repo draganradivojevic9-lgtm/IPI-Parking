@@ -203,7 +203,7 @@
         let detectedZones = [];
         let isFreeParking = false;
         let pendingTimer = null;
-        let realPlaceName = "";
+        let realPlaceName = localStorage.getItem('ipi_last_place') || "";
         let currentSpeed = 0;
         let currentLat = null; 
         let currentLon = null;
@@ -473,15 +473,20 @@
             } else {
                 currentCityKey = null; isFreeParking = true;
                 if (currentSpeed <= 1.5 && navigator.onLine) {
-                    try {
+                       try {
                         const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
                         if (res.ok) {
                             const data = await res.json();
                            
-                            let novoMesto = data.address.village || data.address.hamlet || data.address.town || data.address.city || data.address.municipality;
-                           
-                            if (novoMesto) {
-                                realPlaceName = novoMesto;
+                            if (data && data.address) {
+                                let addr = data.address;
+                               
+                                let novoMesto = addr.village || addr.hamlet || addr.town || addr.city || addr.municipality || addr.county || addr.suburb;
+                               
+                                if (novoMesto) {
+                                    realPlaceName = novoMesto;
+                                    localStorage.setItem('ipi_last_place', realPlaceName); 
+                                }
                             }
                         }
                     } catch(e) {}
@@ -490,13 +495,25 @@
             updateUI();
         }
 
-        function pay(smsCode, zoneName) {
+        function initiatePayment(smsCode, zoneName) {
             let savedVehicles = JSON.parse(localStorage.getItem('ipi_vehicles') || '[]');
-            if (savedVehicles.length > 1) {
-                openPicker(true, smsCode, zoneName);
-            } else {
-                if (!selectedPlate || selectedPlate === "---") { openPicker(); return; }
+           
+            if (savedVehicles.length === 0) {
+                alert(lang === 'SRB' ?
+                    "Nije uneto nijedno vozilo!\nMolimo vas da prvo dodate vozilo u Podešavanjima." :
+                    "No vehicle added!\nPlease add a vehicle in Settings first.");
+                return; 
+            }
+
+            if (savedVehicles.length === 1) {
+                localStorage.setItem('ipi_selected_plate', savedVehicles[0].plate);
+                selectedPlate = savedVehicles[0].plate;
+               
                 executePayment(smsCode, zoneName);
+            }
+            else {
+                pendingPayment = { code: smsCode, name: zoneName };
+                showVehiclePicker(savedVehicles);
             }
         }
 
