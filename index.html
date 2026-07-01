@@ -21,21 +21,21 @@
         }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; user-select: none; }
        
-        /* MOBILE LOCK - Sprečava rastezanje i skrolovanje stranice */
+        
         html, body {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             overflow: hidden; background: var(--bg); margin: 0; padding: 0;
         }
         body { color: var(--text); font-family: -apple-system, sans-serif; }
        
-        /* GLAVNI KONTEJNER */
+        
         .app-container {
             position: absolute; top: 0; bottom: 0; left: 0; right: 0;
             display: flex; flex-direction: column; max-width: 430px; margin: 0 auto;
             overflow: hidden; background: var(--bg);
         }
        
-        /* ZAGLAVLJE */
+        
         .header {
             display: grid; grid-template-columns: 85px 1fr 85px; align-items: center;
             padding: 0 16px; border-bottom: 1px solid var(--border); height: 60px; flex-shrink: 0;
@@ -45,7 +45,7 @@
         .toggle-btn.active { color: var(--text); background: var(--border); }
         .app-logo-text { justify-self: center; font-size: 17px; font-weight: 800; color: var(--text); letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
        
-        /* STATUS I LOKACIJA */
+        
         .status-area {
             text-align: center; padding: 4px 16px; flex-shrink: 0; height: 105px;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -55,7 +55,7 @@
         .veh-line { font-size: 13px; color: #8e8e93; margin-top: 4px; cursor: pointer; display: inline-flex; justify-content: center; align-items: center; padding: 4px 12px; background: var(--card-gray); border-radius: 8px; }
         .street-name { font-size: 12px; color: var(--green); font-weight: 600; margin-top: 4px; height: 28px; line-height: 1.2; display: flex; justify-content: center; align-items: center; text-align: center; }
        
-        /* MREŽA ZONA */
+        
         .main-content {
             flex: 1; min-height: 0; padding: 4px 12px;
             display: grid; grid-template-columns: 1fr 1fr;
@@ -68,14 +68,14 @@
         .zone-card.locked { opacity: 0.35; pointer-events: none; }
         .zone-card b { font-size: 14px; color: var(--card-text); font-weight: 600; }
        
-        /* DONJI BLOK */
+        
         .bottom-container {
             flex-shrink: 0; display: flex; flex-direction: column;
             background: var(--bg); border-top: 1px solid var(--border); width: 100%;
             padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 999;
         }
        
-        /* TAJMER BAR */
+        
         .timer-bar {
             height: 40px; opacity: 0; visibility: hidden; background: #1c1c1e; color: var(--green);
             display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; transition: opacity 0.3s; position: relative; border-bottom: 1px solid var(--border);
@@ -83,13 +83,13 @@
         .timer-bar.visible { opacity: 1; visibility: visible; }
         .cancel-timer { position: absolute; right: 12px; color: var(--red); font-weight: bold; cursor: pointer; padding: 4px 8px; font-size: 11px; background: var(--border); border-radius: 6px; }
        
-        /* NAVIGACIJA */
+        
         .nav { height: 60px; display: flex; justify-content: space-around; align-items: center; background: var(--nav-bg); }
         .nav-item { text-align: center; color: #8e8e93; font-size: 11px; cursor: pointer; flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
         .nav-item.active { color: var(--blue); }
         .nav-item span { font-size: 20px; margin-bottom: 2px; }
        
-        /* MODALI */
+        
         .v-picker { position: absolute; bottom: 0; left: 0; right: 0; height: 75vh; background: var(--card-gray); border-radius: 24px 24px 0 0; padding: 20px; transform: translateY(100%); transition: 0.4s; z-index: 10000; display: flex; flex-direction: column; }
         .v-picker.open { transform: translateY(0); }
         .picker-header { font-size: 16px; color: #8e8e93; text-align: center; margin-bottom: 20px; font-weight: 700; }
@@ -125,8 +125,8 @@
        
         <div class="main-content" id="grid-container"></div>
        
-                      <div class="bottom-container">
-            <div id="prikaz-kredita" style="text-align: center; padding: 10px; font-size: 14px; font-weight: bold; color: var(--green);">Stanje kredita: . . .</div>
+                        <div class="bottom-container">
+            <div id="prikaz-kredita" style="text-align: center; padding: 10px; font-size: 14px; font-weight: bold; color: var(--green);"><span id="credit-label">Stanje kredita</span>: <span id="credit-value">. . .</span></div>
     
             <div id="radno-vreme" style="text-align: center; padding: 5px 10px; font-size: 12px; color: #8e8e93; display: block;"></div>
            
@@ -202,26 +202,28 @@
         let currentLon = null;
 
         const TRANSLATE = {
-            SRB: {
-                locating: "📍 Lociranje...", gpsOff: "📍 UKLJUČI LOKACIJU", veh: "Vozilo", pick: "IZBOR VOZILA",
-                hist: "Istorija", about: "O nama", close: "Zatvori", home: "Početna", set: "Podešavanja",
-                histTitle: "ISTORIJA PLAĆANJA", aboutTitle: "O APLIKACIJI", noHist: "Nema zabeleženih plaćanja.",
-                activePark: "⏱️ Ističe za: ", freePark: "SLOBODNO PARKIRANJE", selectZone: "Odaberi zonu", moving: "U pokretu...",
-                noNet: "⚠️ NEMA INTERNETA",
-                airTitle: "AERODROMI - PARKING", garageTitle: "GARAŽE I RAMPE",
-                aboutTxt: "Brzo, jednostavno i automatizovano plaćanje parkinga SMS-om u svim gradovima Srbije.",
-                zones: ["Dnevna karta", "I Zona", "II Zona", "III Zona", "IV Zona", "V Zona", "VI Zona", "VII Zona", "Garaže-Rampe", "Aerodromi"]
-            },
-            ENG: {
-                locating: "📍 Locating...", gpsOff: "📍 TURN ON LOCATION", veh: "Vehicle", pick: "SELECT VEHICLE",
-                hist: "History", about: "About Us", close: "Close", home: "Home", set: "Settings",
-                histTitle: "PAYMENT HISTORY", aboutTitle: "ABOUT APP", noHist: "No payment records found.",
-                activePark: "⏱️ Expires in: ", freePark: "FREE PARKING", selectZone: "Select zone", moving: "Moving...",
-                noNet: "⚠️ NO INTERNET",
-                airTitle: "AIRPORTS - PARKING", garageTitle: "GARAGES AND RAMPS",
-                aboutTxt: "Fast, simple and automated parking payment via SMS in all cities of Serbia.",
-                zones: ["Daily ticket", "Zone I", "Zone II", "Zone III", "Zone IV", "Zone V", "Zone VI", "Zone VII", "Garages-Ramps", "Airports"]
-            }
+    SRB: {
+        locating: "📍 Lociranje...", gpsOff: "📍 UKLJUČI LOKACIJU", veh: "Vozilo", pick: "IZBOR VOZILA",
+        hist: "Istorija", about: "O nama", close: "Zatvori", home: "Početna", set: "Podešavanja",
+        histTitle: "ISTORIJA PLAĆANJA", aboutTitle: "O APLIKACIJI", noHist: "Nema zabeleženih plaćanja.",
+        activePark: "⏱️ Ističe za: ", freePark: "SLOBODNO PARKIRANJE", selectZone: "Odaberi zonu", moving: "U pokretu...",
+        noNet: "⚠️ NEMA INTERNETA",
+        airTitle: "AERODROMI - PARKING", garageTitle: "GARAŽE I RAMPE",
+        aboutTxt: "Brzo, jednostavno i automatizovano plaćanje parkinga SMS-om u svim gradovima Srbije.",
+        zones: ["Dnevna karta", "I Zona", "II Zona", "III Zona", "IV Zona", "V Zona", "VI Zona", "VII Zona", "Garaže-Rampe", "Aerodromi"],
+        credit: "Stanje kredita"
+    },
+    ENG: {
+        locating: "📍 Locating...", gpsOff: "📍 TURN ON LOCATION", veh: "Vehicle", pick: "SELECT VEHICLE",
+        hist: "History", about: "About Us", close: "Close", home: "Home", set: "Settings",
+        histTitle: "PAYMENT HISTORY", aboutTitle: "ABOUT APP", noHist: "No payment records found.",
+        activePark: "⏱️ Expires in: ", freePark: "FREE PARKING", selectZone: "Select zone", moving: "Moving...",
+        noNet: "⚠️ NO INTERNET",
+        airTitle: "AIRPORTS - PARKING", garageTitle: "GARAGES AND RAMPS",
+        aboutTxt: "Fast, simple and automated parking payment via SMS in all cities of Serbia.",
+        zones: ["Daily ticket", "Zone I", "Zone II", "Zone III", "Zone IV", "Zone V", "Zone VI", "Zone VII", "Garages-Ramps", "Airports"],
+        credit: "Credit Balance"
+    }
         };
 
         function cyrToLat(text) {
@@ -294,6 +296,7 @@
             document.getElementById('lbl-about-text').innerText = t.aboutTxt;
             document.getElementById('lbl-air-title').innerText = t.airTitle;
             document.getElementById('lbl-garage-title').innerText = t.garageTitle;
+            document.getElementById('credit-label').innerText = t.credit;
            
             for(let i=1; i<=5; i++) {
                 let btn = document.getElementById(`lbl-close${i}`);
@@ -482,7 +485,7 @@
             let cityData = parkingData[currentCityKey];
             let cityNameLat = cyrToLat(cityData.name).replace(/opština\s*|opstina\s*/gi, "").trim();
            
-            // Povlači garaže iz fajla, ili kreira pretragu za grad
+            
             let garages = cityData.garages || [{ name: "Sve garaže i javni parkinzi (" + cityNameLat + ")", query: "javna garaza parking " + cityNameLat }];
            
             
@@ -535,7 +538,7 @@
 
             if (!target) {
                 timerBar.classList.remove('visible');
-                if (radnoVremeEl) radnoVremeEl.style.display = 'block'; // Prikazuje radno vreme
+                if (radnoVremeEl) radnoVremeEl.style.display = 'block'; 
                 return;
             }
            
