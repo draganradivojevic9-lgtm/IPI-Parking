@@ -198,6 +198,8 @@
         let pendingTimer = null;
         let realPlaceName = "";
         let currentSpeed = 0;
+        let currentLat = null; 
+        let currentLon = null;
 
         const TRANSLATE = {
             SRB: {
@@ -412,6 +414,7 @@
         }
 
         async function matchLocation(lat, lon) {
+            currentLat = lat; currentLon = lon; 
             if (Object.keys(parkingData).length === 0) { await loadParkingData(); }
             let minDst = Infinity; let closestCity = null; detectedCode = null; detectedStreetName = ""; realPlaceName = ""; isFreeParking = true;
            
@@ -473,18 +476,37 @@
 
         function openMap(url) { window.open(url, "_blank"); }
 
-        function openGaragePicker() {
+             function openGaragePicker() {
             if (!currentCityKey || !parkingData[currentCityKey]) return;
             const list = document.getElementById('garage-list'); list.innerHTML = "";
             let cityData = parkingData[currentCityKey];
             let cityNameLat = cyrToLat(cityData.name).replace(/opština\s*|opstina\s*/gi, "").trim();
            
+            // Povlači garaže iz fajla, ili kreira pretragu za grad
             let garages = cityData.garages || [{ name: "Sve garaže i javni parkinzi (" + cityNameLat + ")", query: "javna garaza parking " + cityNameLat }];
            
+            
+            if (cityData.garages && currentLat !== null && currentLon !== null) {
+                garages = cityData.garages.map(g => {
+                    
+                    let dist = (g.lat && g.lon) ? getDistanceInMeters(currentLat, currentLon, g.lat, g.lon) : Infinity;
+                    return { ...g, distance: dist };
+                }).sort((a, b) => a.distance - b.distance); 
+            }
+
             garages.forEach(g => {
-                let div = document.createElement('div'); div.className = "v-row air-row"; div.innerHTML = `🅿️ ${cyrToLat(g.name)}`;
+                let div = document.createElement('div'); div.className = "v-row air-row";
+               
+                
+                let distText = (g.distance && g.distance !== Infinity) ? ` (${Math.round(g.distance)} m)` : "";
+                div.innerHTML = `🅿️ ${cyrToLat(g.name)}${distText}`;
+               
                 div.onclick = () => {
-                    openMap(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(g.query)}`);
+                    
+                    let mapUrl = (g.lat && g.lon)
+                        ? `https://www.google.com/maps/dir/?api=1&destination=${g.lat},${g.lon}`
+                        : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(g.query || 'javna garaza parking ' + cityNameLat)}`;
+                    openMap(mapUrl);
                 };
                 list.appendChild(div);
             });

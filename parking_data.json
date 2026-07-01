@@ -1,5 +1,5 @@
 {
-  "Beograd": {
+    "Beograd": {
     "name": "Beograd",
     "lat": 44.8125,
     "lon": 20.4612,
@@ -12,21 +12,45 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kneza Miloša", "code": "9112", "center_lat": 44.8050, "center_lon": 20.4570, "radius": 600},
-      {"name": "Bul. kralja Aleksandra", "code": "9112", "center_lat": 44.8055, "center_lon": 20.4740, "radius": 800},
-      {"name": "Kosančićev venac", "code": "9114", "center_lat": 44.8170, "center_lon": 20.4500, "radius": 300},
-      {"name": "Dorćol Gornji", "code": "9111", "center_lat": 44.8210, "center_lon": 20.4610, "radius": 500},
-      {"name": "Dorćol Donji", "code": "9113", "center_lat": 44.8250, "center_lon": 20.4650, "radius": 500},
-      {"name": "Novi Beograd", "code": "9118", "center_lat": 44.8140, "center_lon": 20.4150, "radius": 1200},
-      {"name": "Vračar", "code": "9113", "center_lat": 44.7980, "center_lon": 20.4690, "radius": 600}
+     
+      {"name": "Kosančićev venac", "code": "9114", "center_lat": 44.8170, "center_lon": 20.4500, "radius": 200},
+      {"name": "Cara Uroša (A zona)", "code": "9114", "center_lat": 44.8213, "center_lon": 20.4552, "radius": 200},
+     
+      {"name": "Bul. kralja Aleksandra (Centar)", "code": "9112", "center_lat": 44.8105, "center_lon": 20.4668, "radius": 250},
+      {"name": "Bul. kralja Aleksandra (Vuk)", "code": "9113", "center_lat": 44.8055, "center_lon": 20.4775, "radius": 250},
+      {"name": "Kneza Miloša (Vlada)", "code": "9112", "center_lat": 44.8058, "center_lon": 20.4593, "radius": 200},
+      {"name": "Kneza Miloša (Klinički)", "code": "9113", "center_lat": 44.8015, "center_lon": 20.4525, "radius": 250},
+      {"name": "Nemanjina", "code": "9112", "center_lat": 44.8040, "center_lon": 20.4610, "radius": 250},
+      {"name": "Takovska", "code": "9112", "center_lat": 44.8115, "center_lon": 20.4695, "radius": 250},
+      {"name": "Cara Dušana", "code": "9113", "center_lat": 44.8235, "center_lon": 20.4640, "radius": 250},
+      {"name": "Francuska", "code": "9111", "center_lat": 44.8185, "center_lon": 20.4635, "radius": 200},
+      {"name": "Makenzijeva", "code": "9113", "center_lat": 44.7985, "center_lon": 20.4720, "radius": 250},
+
+     
+      {"name": "Trg Republike i Knez Mihailova", "code": "9111", "center_lat": 44.8160, "center_lon": 20.4600, "radius": 450},
+      {"name": "Dorćol (Gornji deo)", "code": "9111", "center_lat": 44.8210, "center_lon": 20.4610, "radius": 550},
+      {"name": "Zeleni Venac", "code": "9111", "center_lat": 44.8131, "center_lon": 20.4550, "radius": 400},
+      {"name": "Slavija", "code": "9112", "center_lat": 44.8025, "center_lon": 20.4660, "radius": 600},
+      {"name": "Palilula (Centar)", "code": "9112", "center_lat": 44.8090, "center_lon": 20.4720, "radius": 700},
+      {"name": "Savski Trg / BW Deo", "code": "9112", "center_lat": 44.8080, "center_lon": 20.4520, "radius": 600},
+      {"name": "Donji Dorćol", "code": "9113", "center_lat": 44.8250, "center_lon": 20.4650, "radius": 600},
+      {"name": "Vračar (Hram Sv. Save)", "code": "9113", "center_lat": 44.7980, "center_lon": 20.4690, "radius": 650},
+      {"name": "Crveni Krst", "code": "9113", "center_lat": 44.7960, "center_lon": 20.4850, "radius": 700},
+      {"name": "Zvezdara (Đeram / Cvetko)", "code": "9113", "center_lat": 44.7960, "center_lon": 20.4950, "radius": 900},
+      {"name": "Senjak (Zonirani deo)", "code": "9113", "center_lat": 44.7900, "center_lon": 20.4420, "radius": 700},
+      {"name": "Novi Beograd (Opština i Merkator)", "code": "9118", "center_lat": 44.8230, "center_lon": 20.4140, "radius": 1200},
+      {"name": "Novi Beograd (Sava Centar i Ušće)", "code": "9118", "center_lat": 44.8140, "center_lon": 20.4300, "radius": 1200},
+      {"name": "Novi Beograd (Belville i Delta City)", "code": "9118", "center_lat": 44.8070, "center_lon": 20.4000, "radius": 1000},
+      {"name": "Zemun (Centar)", "code": "9118", "center_lat": 44.8430, "center_lon": 20.4100, "radius": 1000},
+      {"name": "Voždovac / Banjica (Zonirani deo)", "code": "9118", "center_lat": 44.7650, "center_lon": 20.4780, "radius": 1000}
     ],
     "garages": [
-      {"name": "Obilićev venac", "query": "garaza obilicev venac"},
-      {"name": "Zeleni venac", "query": "garaza zeleni venac"},
-      {"name": "Masarikova", "query": "garaza masarikova"}
+      {"name": "Obilićev venac", "query": "garaza obilicev venac", "lat": 44.8161, "lon": 20.4578},
+      {"name": "Zeleni venac", "query": "garaza zeleni venac", "lat": 44.8131, "lon": 20.4542},
+      {"name": "Masarikova", "query": "garaza masarikova", "lat": 44.8068, "lon": 20.4633}
     ]
   },
-  "NoviSad": {
+    "NoviSad": {
     "name": "Novi Sad",
     "lat": 45.2671,
     "lon": 19.8335,
@@ -39,14 +63,20 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Zmaj Jovina", "code": "8210", "center_lat": 45.2578, "center_lon": 19.8460, "radius": 250},
-      {"name": "Bul. Mihajla Pupina", "code": "8211", "center_lat": 45.2540, "center_lon": 19.8420, "radius": 400},
-      {"name": "Jevrejska", "code": "8211", "center_lat": 45.2535, "center_lon": 19.8380, "radius": 350},
-      {"name": "Bul. Oslobođenja", "code": "8212", "center_lat": 45.2550, "center_lon": 19.8350, "radius": 800},
-      {"name": "Narodnog fronta", "code": "8218", "center_lat": 45.2380, "center_lon": 19.8350, "radius": 800}
+      {"name": "Zmaj Jovina i Dunavska", "code": "8210", "center_lat": 45.2570, "center_lon": 19.8470, "radius": 150},
+      {"name": "Bul. Mihajla Pupina", "code": "8211", "center_lat": 45.2540, "center_lon": 19.8420, "radius": 200},
+      {"name": "Jevrejska i Uspenska", "code": "8211", "center_lat": 45.2535, "center_lon": 19.8380, "radius": 200},
+      {"name": "Bulevar Oslobođenja (Centar)", "code": "8212", "center_lat": 45.2550, "center_lon": 19.8350, "radius": 250},
+      {"name": "Bulevar Oslobođenja (Spens)", "code": "8212", "center_lat": 45.2470, "center_lon": 19.8380, "radius": 250},
+      {"name": "Narodnog fronta (Liman)", "code": "8218", "center_lat": 45.2380, "center_lon": 19.8350, "radius": 250},
+     
+      {"name": "Stari Grad (Uži centar)", "code": "8211", "center_lat": 45.2550, "center_lon": 19.8450, "radius": 500},
+      {"name": "Podbara i Rotkvarija", "code": "8212", "center_lat": 45.2630, "center_lon": 19.8400, "radius": 600},
+      {"name": "Grbavica i Spens", "code": "8212", "center_lat": 45.2470, "center_lon": 19.8380, "radius": 600},
+      {"name": "Liman (Šira zona)", "code": "8218", "center_lat": 45.2390, "center_lon": 19.8380, "radius": 800}
     ],
     "garages": [
-      {"name": "Promenada", "query": "parking garaza Promenada Novi Sad"}
+      {"name": "Promenada", "query": "parking garaza Promenada Novi Sad", "lat": 45.2443, "lon": 19.8422}
     ]
   },
   "Nis": {
@@ -62,13 +92,18 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Trg Kralja Milana", "code": "9181", "center_lat": 43.3200, "center_lon": 21.8950, "radius": 300},
-      {"name": "Vožda Karađorđa", "code": "9182", "center_lat": 43.3220, "center_lon": 21.9000, "radius": 400},
-      {"name": "Obrenovićeva", "code": "9181", "center_lat": 43.3180, "center_lon": 21.8960, "radius": 350},
-      {"name": "Bulevar Nemanjića", "code": "9183", "center_lat": 43.3180, "center_lon": 21.9150, "radius": 800}
+      {"name": "Trg Kralja Milana", "code": "9181", "center_lat": 43.3200, "center_lon": 21.8950, "radius": 150},
+      {"name": "Obrenovićeva (Pele)", "code": "9181", "center_lat": 43.3180, "center_lon": 21.8960, "radius": 200},
+      {"name": "Vožda Karađorđa (Sud)", "code": "9182", "center_lat": 43.3220, "center_lon": 21.9000, "radius": 250},
+      {"name": "Bulevar Dr Zorana Đinđića", "code": "9183", "center_lat": 43.3165, "center_lon": 21.9120, "radius": 250},
+      {"name": "Bulevar Nemanjića", "code": "9183", "center_lat": 43.3180, "center_lon": 21.9150, "radius": 300},
+     
+      {"name": "Stari Grad / Centar", "code": "9181", "center_lat": 43.3210, "center_lon": 21.8960, "radius": 450},
+      {"name": "Medijana (Širi centar)", "code": "9182", "center_lat": 43.3200, "center_lon": 21.9050, "radius": 700},
+      {"name": "Palilula i Trošarina (Zonirani delovi)", "code": "9183", "center_lat": 43.3130, "center_lon": 21.9020, "radius": 950}
     ],
     "garages": [
-      {"name": "Parking Čair", "query": "parking cair nis"}
+      {"name": "Parking Čair", "query": "parking cair nis", "lat": 43.3168, "lon": 21.9022}
     ]
   },
   "Kragujevac": {
@@ -84,12 +119,17 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kralja Aleksandra I", "code": "9341", "center_lat": 44.0120, "center_lon": 20.9120, "radius": 400},
-      {"name": "Kneza Miloša", "code": "9342", "center_lat": 44.0100, "center_lon": 20.9150, "radius": 500},
-      {"name": "Save Kovačevića", "code": "9343", "center_lat": 44.0150, "center_lon": 20.9200, "radius": 600}
+      {"name": "Kralja Aleksandra I Karađorđevića", "code": "9341", "center_lat": 44.0120, "center_lon": 20.9120, "radius": 200},
+      {"name": "27. marta (Centar)", "code": "9341", "center_lat": 44.0108, "center_lon": 20.9105, "radius": 200},
+      {"name": "Kneza Miloša", "code": "9342", "center_lat": 44.0100, "center_lon": 20.9150, "radius": 250},
+      {"name": "Save Kovačevića", "code": "9343", "center_lat": 44.0150, "center_lon": 20.9200, "radius": 250},
+     
+      {"name": "Stari Grad (Uži centar)", "code": "9341", "center_lat": 44.0115, "center_lon": 20.9110, "radius": 450},
+      {"name": "Lepenica i Širi centar", "code": "9342", "center_lat": 44.0090, "center_lon": 20.9180, "radius": 650},
+      {"name": "Aerodrom / Erdoglija (Zonirani obodi)", "code": "9343", "center_lat": 44.0180, "center_lon": 20.9050, "radius": 900}
     ],
     "garages": [
-      {"name": "Zatvoreni parkinzi", "query": "zatvoreni parking Kragujevac"}
+      {"name": "Zatvoreni parkinzi", "query": "zatvoreni parking Kragujevac", "lat": 44.0105, "lon": 20.9160}
     ]
   },
   "Subotica": {
@@ -105,15 +145,20 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Trg Republike", "code": "9241", "center_lat": 46.1006, "center_lon": 19.6644, "radius": 300},
-      {"name": "Somborski put", "code": "9242", "center_lat": 46.0960, "center_lon": 19.6550, "radius": 500},
-      {"name": "Aleja Maršala Tita", "code": "9243", "center_lat": 46.1050, "center_lon": 19.6600, "radius": 500}
+      {"name": "Trg Republike", "code": "9241", "center_lat": 46.1006, "center_lon": 19.6644, "radius": 200},
+      {"name": "Korzo", "code": "9241", "center_lat": 46.1000, "center_lon": 19.6660, "radius": 200},
+      {"name": "Somborski put", "code": "9242", "center_lat": 46.0960, "center_lon": 19.6550, "radius": 250},
+      {"name": "Aleja Maršala Tita", "code": "9243", "center_lat": 46.1050, "center_lon": 19.6600, "radius": 250},
+     
+      {"name": "Strogi Centar", "code": "9241", "center_lat": 46.1000, "center_lon": 19.6650, "radius": 400},
+      {"name": "Širi Centar", "code": "9242", "center_lat": 46.0980, "center_lon": 19.6600, "radius": 600},
+      {"name": "Radijalac i Prozivka", "code": "9243", "center_lat": 46.0900, "center_lon": 19.6600, "radius": 800}
     ],
     "garages": [
-      {"name": "Parking Mlečna pijaca", "query": "parking mlecna pijaca Subotica"}
+      {"name": "Parking Mlečna pijaca", "query": "parking mlecna pijaca Subotica", "lat": 46.1030, "lon": 19.6595}
     ]
   },
-  "Zlatibor": {
+    "Zlatibor": {
     "name": "Zlatibor",
     "lat": 43.7258,
     "lon": 19.6983,
@@ -126,11 +171,16 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub-Ned: 07:00 - 21:00",
     "streets": [
-      {"name": "Centar", "code": "8531", "center_lat": 43.7250, "center_lon": 19.6980, "radius": 400},
-      {"name": "Jezero", "code": "8532", "center_lat": 43.7270, "center_lon": 19.7000, "radius": 500}
+      {"name": "Centar i Jezero", "code": "8531", "center_lat": 43.7250, "center_lon": 19.6980, "radius": 200},
+      {"name": "Tržni centar", "code": "8531", "center_lat": 43.7265, "center_lon": 19.6990, "radius": 150},
+      {"name": "Obod jezera", "code": "8532", "center_lat": 43.7275, "center_lon": 19.7010, "radius": 200},
+     
+      {"name": "Uži centar", "code": "8531", "center_lat": 43.7255, "center_lon": 19.6985, "radius": 400},
+      {"name": "Širi centar i naselja", "code": "8532", "center_lat": 43.7280, "center_lon": 19.7020, "radius": 700},
+      {"name": "Periferija", "code": "8533", "center_lat": 43.7300, "center_lon": 19.7050, "radius": 1000}
     ],
     "garages": [
-      {"name": "Parking kod pijace", "query": "parking pijaca Zlatibor"}
+      {"name": "Parking kod pijace", "query": "parking pijaca Zlatibor", "lat": 43.7252, "lon": 19.6975}
     ]
   },
   "VrnjackaBanja": {
@@ -146,11 +196,14 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Promenada", "code": "9365", "center_lat": 43.6250, "center_lon": 20.8950, "radius": 500},
-      {"name": "Kruševačka", "code": "9366", "center_lat": 43.6280, "center_lon": 20.8980, "radius": 400}
+      {"name": "Promenada", "code": "9365", "center_lat": 43.6250, "center_lon": 20.8950, "radius": 150},
+      {"name": "Kruševačka", "code": "9366", "center_lat": 43.6280, "center_lon": 20.8980, "radius": 200},
+     
+      {"name": "Uži centar (Ekstra)", "code": "9365", "center_lat": 43.6255, "center_lon": 20.8955, "radius": 400},
+      {"name": "Šira zona (Crvena)", "code": "9366", "center_lat": 43.6270, "center_lon": 20.8970, "radius": 700}
     ],
     "garages": [
-      {"name": "Javni parking", "query": "javni parking Vrnjacka banja"}
+      {"name": "Javni parking", "query": "javni parking Vrnjacka banja", "lat": 43.6260, "lon": 20.8940}
     ]
   },
   "Arandjelovac": {
@@ -166,8 +219,11 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Knjaza Miloša", "code": "9345", "center_lat": 44.3030, "center_lon": 20.5600, "radius": 450},
-      {"name": "Ilije Garašanina", "code": "9346", "center_lat": 44.3050, "center_lon": 20.5650, "radius": 400}
+      {"name": "Knjaza Miloša", "code": "9345", "center_lat": 44.3030, "center_lon": 20.5600, "radius": 200},
+      {"name": "Ilije Garašanina", "code": "9346", "center_lat": 44.3050, "center_lon": 20.5650, "radius": 200},
+     
+      {"name": "Centar grada", "code": "9345", "center_lat": 44.3035, "center_lon": 20.5610, "radius": 450},
+      {"name": "Širi centar", "code": "9346", "center_lat": 44.3055, "center_lon": 20.5640, "radius": 700}
     ],
     "garages": []
   },
@@ -184,8 +240,11 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Miloša Obrenovića", "code": "9115", "center_lat": 44.6530, "center_lon": 20.2010, "radius": 400},
-      {"name": "Vuka Karadžića", "code": "9116", "center_lat": 44.6550, "center_lon": 20.2050, "radius": 400}
+      {"name": "Miloša Obrenovića", "code": "9115", "center_lat": 44.6530, "center_lon": 20.2010, "radius": 200},
+      {"name": "Vuka Karadžića", "code": "9116", "center_lat": 44.6550, "center_lon": 20.2050, "radius": 200},
+     
+      {"name": "Uži centar", "code": "9115", "center_lat": 44.6535, "center_lon": 20.2015, "radius": 450},
+      {"name": "Širi centar", "code": "9116", "center_lat": 44.6555, "center_lon": 20.2040, "radius": 750}
     ],
     "garages": []
   },
@@ -202,12 +261,16 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 20:00",
     "hoursWeekend": "Sub: 07:00 - 13:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kralja Petra I", "code": "9250", "center_lat": 45.7667, "center_lon": 19.1600, "radius": 300},
-      {"name": "Venac Stepe", "code": "9251", "center_lat": 45.7680, "center_lon": 19.1620, "radius": 350},
-      {"name": "Apatinski put", "code": "9252", "center_lat": 45.7620, "center_lon": 19.1500, "radius": 400}
+      {"name": "Kralja Petra I", "code": "9251", "center_lat": 45.7667, "center_lon": 19.1600, "radius": 200},
+      {"name": "Venac Stepe Stepanovića", "code": "9251", "center_lat": 45.7680, "center_lon": 19.1620, "radius": 200},
+      {"name": "Vojvođanska", "code": "9252", "center_lat": 45.7720, "center_lon": 19.1550, "radius": 250},
+      {"name": "Apatinski put", "code": "9252", "center_lat": 45.7620, "center_lon": 19.1500, "radius": 250},
+     
+      {"name": "Venac (Uži centar)", "code": "9251", "center_lat": 45.7670, "center_lon": 19.1610, "radius": 500},
+      {"name": "Širi centar (Van venca)", "code": "9252", "center_lat": 45.7650, "center_lon": 19.1550, "radius": 800}
     ],
     "garages": [
-      {"name": "Zatvoreni parking Sombor", "query": "zatvoreni parking Sombor"}
+      {"name": "Zatvoreni parking Sombor", "query": "zatvoreni parking Sombor", "lat": 45.7680, "lon": 19.1580}
     ]
   },
   "Zrenjanin": {
@@ -223,12 +286,17 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kralja Aleksandra I", "code": "8230", "center_lat": 45.3800, "center_lon": 20.3800, "radius": 350},
-      {"name": "Svetosavska", "code": "8231", "center_lat": 45.3830, "center_lon": 20.3880, "radius": 300},
-      {"name": "Nemanjina", "code": "8232", "center_lat": 45.3880, "center_lon": 20.3950, "radius": 400}
+      {"name": "Kralja Aleksandra I", "code": "8230", "center_lat": 45.3800, "center_lon": 20.3800, "radius": 200},
+      {"name": "Gimnazijska", "code": "8230", "center_lat": 45.3810, "center_lon": 20.3820, "radius": 200},
+      {"name": "Svetosavska", "code": "8231", "center_lat": 45.3830, "center_lon": 20.3880, "radius": 250},
+      {"name": "Nemanjina", "code": "8232", "center_lat": 45.3880, "center_lon": 20.3950, "radius": 250},
+     
+      {"name": "Strogi Centar", "code": "8230", "center_lat": 45.3805, "center_lon": 20.3810, "radius": 400},
+      {"name": "Širi Centar", "code": "8231", "center_lat": 45.3820, "center_lon": 20.3850, "radius": 600},
+      {"name": "Periferija", "code": "8232", "center_lat": 45.3850, "center_lon": 20.3900, "radius": 800}
     ],
     "garages": [
-      {"name": "Parking Prevlaka", "query": "parking prevlaka Zrenjanin"}
+      {"name": "Parking Prevlaka", "query": "parking prevlaka Zrenjanin", "lat": 45.3795, "lon": 20.3902}
     ]
   },
   "Pancevo": {
@@ -244,15 +312,20 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Vojvode R. Putnika", "code": "9131", "center_lat": 44.8710, "center_lon": 20.6410, "radius": 350},
-      {"name": "Braće Jovanovića", "code": "9132", "center_lat": 44.8680, "center_lon": 20.6450, "radius": 400},
-      {"name": "Nemanjina", "code": "9133", "center_lat": 44.8630, "center_lon": 20.6500, "radius": 400}
+      {"name": "Vojvode R. Putnika", "code": "9131", "center_lat": 44.8710, "center_lon": 20.6410, "radius": 200},
+      {"name": "Miloša Obrenovića", "code": "9131", "center_lat": 44.8740, "center_lon": 20.6440, "radius": 200},
+      {"name": "Braće Jovanovića", "code": "9132", "center_lat": 44.8680, "center_lon": 20.6450, "radius": 250},
+      {"name": "Nemanjina", "code": "9133", "center_lat": 44.8630, "center_lon": 20.6500, "radius": 250},
+     
+      {"name": "Centar grada", "code": "9131", "center_lat": 44.8720, "center_lon": 20.6420, "radius": 400},
+      {"name": "Šira zona centra", "code": "9132", "center_lat": 44.8690, "center_lon": 20.6460, "radius": 600},
+      {"name": "Periferija", "code": "9133", "center_lat": 44.8650, "center_lon": 20.6500, "radius": 800}
     ],
     "garages": [
-      {"name": "Parking kod Opštine", "query": "parking zgrada opstine Pancevo"}
+      {"name": "Parking kod Opštine", "query": "parking zgrada opstine Pancevo", "lat": 44.8732, "lon": 20.6405}
     ]
   },
-  "Kikinda": {
+    "Kikinda": {
     "name": "Kikinda",
     "lat": 45.8280,
     "lon": 20.4670,
@@ -265,8 +338,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Svetosavska", "code": "9231", "center_lat": 45.8280, "center_lon": 20.4670, "radius": 350},
-      {"name": "Nemanjina", "code": "9232", "center_lat": 45.8310, "center_lon": 20.4600, "radius": 450}
+      {"name": "Trg srpskih dobrovoljaca", "code": "9231", "center_lat": 45.8300, "center_lon": 20.4650, "radius": 200},
+      {"name": "Svetosavska", "code": "9231", "center_lat": 45.8280, "center_lon": 20.4670, "radius": 200},
+      {"name": "Nemanjina", "code": "9232", "center_lat": 45.8310, "center_lon": 20.4600, "radius": 250},
+     
+      {"name": "Centar grada", "code": "9231", "center_lat": 45.8290, "center_lon": 20.4660, "radius": 400},
+      {"name": "Šira zona", "code": "9232", "center_lat": 45.8300, "center_lon": 20.4600, "radius": 700}
     ],
     "garages": []
   },
@@ -283,9 +360,13 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Trg Ćire Milekića", "code": "8221", "center_lat": 44.9750, "center_lon": 19.6080, "radius": 300},
-      {"name": "Svetog Save", "code": "8222", "center_lat": 44.9720, "center_lon": 19.6120, "radius": 350},
-      {"name": "Parobrodska", "code": "8223", "center_lat": 44.9700, "center_lon": 19.6050, "radius": 400}
+      {"name": "Trg Ćire Milekića", "code": "8221", "center_lat": 44.9750, "center_lon": 19.6080, "radius": 200},
+      {"name": "Svetog Save", "code": "8222", "center_lat": 44.9720, "center_lon": 19.6120, "radius": 200},
+      {"name": "Parobrodska", "code": "8223", "center_lat": 44.9700, "center_lon": 19.6050, "radius": 250},
+     
+      {"name": "Uži centar", "code": "8221", "center_lat": 44.9750, "center_lon": 19.6080, "radius": 350},
+      {"name": "Širi centar", "code": "8222", "center_lat": 44.9720, "center_lon": 19.6100, "radius": 550},
+      {"name": "Obod centra", "code": "8223", "center_lat": 44.9700, "center_lon": 19.6050, "radius": 700}
     ],
     "garages": []
   },
@@ -302,8 +383,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Dositejeva", "code": "9135", "center_lat": 45.1200, "center_lon": 21.3000, "radius": 350},
-      {"name": "Vuka Karadžića", "code": "9136", "center_lat": 45.1250, "center_lon": 21.2980, "radius": 400}
+      {"name": "Trg Svetog Teodora", "code": "9135", "center_lat": 45.1215, "center_lon": 21.2985, "radius": 200},
+      {"name": "Dositejeva", "code": "9135", "center_lat": 45.1200, "center_lon": 21.3000, "radius": 200},
+      {"name": "Vuka Karadžića", "code": "9136", "center_lat": 45.1250, "center_lon": 21.2980, "radius": 250},
+     
+      {"name": "Centar grada", "code": "9135", "center_lat": 45.1210, "center_lon": 21.3000, "radius": 400},
+      {"name": "Širi centar", "code": "9136", "center_lat": 45.1240, "center_lon": 21.2980, "radius": 650}
     ],
     "garages": []
   },
@@ -320,8 +405,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Glavna", "code": "9721", "center_lat": 45.0050, "center_lon": 19.8200, "radius": 350},
-      {"name": "Železnička", "code": "9723", "center_lat": 45.0120, "center_lon": 19.8100, "radius": 450}
+      {"name": "Glavna ulica", "code": "9721", "center_lat": 45.0050, "center_lon": 19.8200, "radius": 200},
+      {"name": "Orlovićeva", "code": "9721", "center_lat": 45.0070, "center_lon": 19.8220, "radius": 200},
+      {"name": "Železnička", "code": "9723", "center_lat": 45.0120, "center_lon": 19.8100, "radius": 250},
+     
+      {"name": "Centar grada", "code": "9721", "center_lat": 45.0060, "center_lon": 19.8210, "radius": 450},
+      {"name": "Širi centar", "code": "9723", "center_lat": 45.0100, "center_lon": 19.8150, "radius": 750}
     ],
     "garages": []
   },
@@ -338,8 +427,11 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Maršala Tita", "code": "9211", "center_lat": 45.5680, "center_lon": 19.6460, "radius": 300},
-      {"name": "Gustava Krkleca", "code": "9212", "center_lat": 45.5700, "center_lon": 19.6490, "radius": 250}
+      {"name": "Maršala Tita", "code": "9211", "center_lat": 45.5680, "center_lon": 19.6460, "radius": 200},
+      {"name": "Gustava Krkleca", "code": "9212", "center_lat": 45.5700, "center_lon": 19.6490, "radius": 200},
+     
+      {"name": "Uži centar", "code": "9211", "center_lat": 45.5680, "center_lon": 19.6460, "radius": 350},
+      {"name": "Širi centar", "code": "9212", "center_lat": 45.5700, "center_lon": 19.6480, "radius": 600}
     ],
     "garages": []
   },
@@ -356,7 +448,10 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kralja Petra I", "code": "9215", "center_lat": 45.2490, "center_lon": 19.3920, "radius": 400}
+      {"name": "Kralja Petra I", "code": "9215", "center_lat": 45.2490, "center_lon": 19.3920, "radius": 250},
+      {"name": "Jugoslovenske armije", "code": "9215", "center_lat": 45.2520, "center_lon": 19.3950, "radius": 250},
+     
+      {"name": "Sve zone (Centar)", "code": "9215", "center_lat": 45.2500, "center_lon": 19.3920, "radius": 800}
     ],
     "garages": []
   },
@@ -373,8 +468,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Vojvode Stepe", "code": "9221", "center_lat": 45.0480, "center_lon": 20.0810, "radius": 350},
-      {"name": "Cara Dušana", "code": "9222", "center_lat": 45.0500, "center_lon": 20.0850, "radius": 300}
+      {"name": "Vojvode Stepe", "code": "9221", "center_lat": 45.0480, "center_lon": 20.0810, "radius": 200},
+      {"name": "Novosadska", "code": "9221", "center_lat": 45.0520, "center_lon": 20.0800, "radius": 200},
+      {"name": "Cara Dušana", "code": "9222", "center_lat": 45.0500, "center_lon": 20.0850, "radius": 250},
+     
+      {"name": "Centar grada", "code": "9221", "center_lat": 45.0490, "center_lon": 20.0810, "radius": 450},
+      {"name": "Širi centar", "code": "9222", "center_lat": 45.0500, "center_lon": 20.0840, "radius": 750}
     ],
     "garages": []
   },
@@ -391,7 +490,10 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Svetosavska", "code": "9225", "center_lat": 44.9870, "center_lon": 20.1630, "radius": 300}
+      {"name": "Svetosavska", "code": "9225", "center_lat": 44.9870, "center_lon": 20.1630, "radius": 250},
+      {"name": "Kralja Petra I Karađorđevića", "code": "9225", "center_lat": 44.9840, "center_lon": 20.1580, "radius": 250},
+     
+      {"name": "Sve zone (Centar)", "code": "9225", "center_lat": 44.9850, "center_lon": 20.1600, "radius": 700}
     ],
     "garages": []
   },
@@ -408,11 +510,14 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Trg Oslobođenja", "code": "9218", "center_lat": 45.6150, "center_lon": 20.0480, "radius": 300}
+      {"name": "Trg Oslobođenja", "code": "9218", "center_lat": 45.6150, "center_lon": 20.0480, "radius": 250},
+      {"name": "Glavna", "code": "9218", "center_lat": 45.6180, "center_lon": 20.0450, "radius": 250},
+     
+      {"name": "Sve zone (Centar)", "code": "9218", "center_lat": 45.6150, "center_lon": 20.0480, "radius": 700}
     ],
     "garages": []
   },
-  "Kula": {
+    "Kula": {
     "name": "Kula",
     "lat": 45.6110,
     "lon": 19.5320,
@@ -425,7 +530,10 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kramera", "code": "9219", "center_lat": 45.6110, "center_lon": 19.5320, "radius": 350}
+      {"name": "Josipa Kramera", "code": "9219", "center_lat": 45.6110, "center_lon": 19.5320, "radius": 200},
+      {"name": "Maršala Tita", "code": "9219", "center_lat": 45.6130, "center_lon": 19.5280, "radius": 200},
+     
+      {"name": "Sve zone (Centar)", "code": "9219", "center_lat": 45.6120, "center_lon": 19.5300, "radius": 700}
     ],
     "garages": []
   },
@@ -442,8 +550,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Gospodar Jevremova", "code": "9151", "center_lat": 44.7558, "center_lon": 19.6922, "radius": 350},
-      {"name": "Masarikova", "code": "9152", "center_lat": 44.7530, "center_lon": 19.6900, "radius": 400}
+      {"name": "Gospodar Jevremova", "code": "9151", "center_lat": 44.7558, "center_lon": 19.6922, "radius": 200},
+      {"name": "Karađorđeva", "code": "9151", "center_lat": 44.7565, "center_lon": 19.6950, "radius": 200},
+      {"name": "Masarikova", "code": "9152", "center_lat": 44.7530, "center_lon": 19.6900, "radius": 250},
+     
+      {"name": "Uži centar", "code": "9151", "center_lat": 44.7560, "center_lon": 19.6930, "radius": 450},
+      {"name": "Širi centar", "code": "9152", "center_lat": 44.7530, "center_lon": 19.6880, "radius": 700}
     ],
     "garages": []
   },
@@ -460,7 +572,10 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Svetog Save", "code": "9155", "center_lat": 44.5330, "center_lon": 19.2220, "radius": 350}
+      {"name": "Svetog Save", "code": "9155", "center_lat": 44.5330, "center_lon": 19.2220, "radius": 200},
+      {"name": "Trg Vuka Karadžića", "code": "9155", "center_lat": 44.5310, "center_lon": 19.2250, "radius": 200},
+     
+      {"name": "Sve zone (Centar)", "code": "9155", "center_lat": 44.5320, "center_lon": 19.2230, "radius": 700}
     ],
     "garages": []
   },
@@ -477,8 +592,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Karađorđeva", "code": "9141", "center_lat": 44.2700, "center_lon": 19.8910, "radius": 400},
-      {"name": "Pantićeva", "code": "9142", "center_lat": 44.2680, "center_lon": 19.8880, "radius": 450}
+      {"name": "Karađorđeva", "code": "9141", "center_lat": 44.2700, "center_lon": 19.8910, "radius": 200},
+      {"name": "Vojvode Mišića", "code": "9141", "center_lat": 44.2690, "center_lon": 19.8890, "radius": 200},
+      {"name": "Pantićeva", "code": "9142", "center_lat": 44.2680, "center_lon": 19.8880, "radius": 250},
+     
+      {"name": "Uži centar", "code": "9141", "center_lat": 44.2700, "center_lon": 19.8900, "radius": 400},
+      {"name": "Širi centar", "code": "9142", "center_lat": 44.2670, "center_lon": 19.8870, "radius": 700}
     ],
     "garages": []
   },
@@ -495,11 +614,15 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Dimitrija Tucovića", "code": "9311", "center_lat": 43.8510, "center_lon": 19.8440, "radius": 350},
-      {"name": "Jug Bogdanova", "code": "9312", "center_lat": 43.8540, "center_lon": 19.8480, "radius": 400}
+      {"name": "Dimitrija Tucovića", "code": "9311", "center_lat": 43.8510, "center_lon": 19.8440, "radius": 200},
+      {"name": "Omladinska", "code": "9311", "center_lat": 43.8530, "center_lon": 19.8460, "radius": 200},
+      {"name": "Jug Bogdanova", "code": "9312", "center_lat": 43.8540, "center_lon": 19.8480, "radius": 250},
+     
+      {"name": "Uži centar", "code": "9311", "center_lat": 43.8520, "center_lon": 19.8450, "radius": 400},
+      {"name": "Širi centar", "code": "9312", "center_lat": 43.8550, "center_lon": 19.8490, "radius": 700}
     ],
     "garages": [
-      {"name": "Javna garaža Užice", "query": "javna garaza uzice"}
+      {"name": "Javna garaža Užice", "query": "javna garaza uzice", "lat": 43.8550, "lon": 19.8420}
     ]
   },
   "Cacak": {
@@ -515,8 +638,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kneza Miloša", "code": "9321", "center_lat": 43.8900, "center_lon": 20.3470, "radius": 300},
-      {"name": "Vojvode Stepe", "code": "9322", "center_lat": 43.8870, "center_lon": 20.3500, "radius": 450}
+      {"name": "Kneza Miloša", "code": "9321", "center_lat": 43.8900, "center_lon": 20.3470, "radius": 150},
+      {"name": "Župana Stracimira", "code": "9321", "center_lat": 43.8915, "center_lon": 20.3490, "radius": 150},
+      {"name": "Vojvode Stepe", "code": "9322", "center_lat": 43.8870, "center_lon": 20.3500, "radius": 250},
+     
+      {"name": "Uži centar (Ekstra)", "code": "9321", "center_lat": 43.8905, "center_lon": 20.3480, "radius": 300},
+      {"name": "Širi centar (I Zona)", "code": "9322", "center_lat": 43.8880, "center_lon": 20.3510, "radius": 600}
     ],
     "garages": []
   },
@@ -533,7 +660,10 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kneza Aleksandra", "code": "9325", "center_lat": 44.0300, "center_lon": 20.4500, "radius": 400}
+      {"name": "Kneza Aleksandra", "code": "9325", "center_lat": 44.0300, "center_lon": 20.4500, "radius": 200},
+      {"name": "Takovska", "code": "9325", "center_lat": 44.0280, "center_lon": 20.4530, "radius": 200},
+     
+      {"name": "Sve zone (Centar)", "code": "9325", "center_lat": 44.0290, "center_lon": 20.4510, "radius": 600}
     ],
     "garages": []
   },
@@ -550,8 +680,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Omladinska", "code": "9361", "center_lat": 43.7240, "center_lon": 20.6870, "radius": 300},
-      {"name": "Cara Dušana", "code": "9362", "center_lat": 43.7220, "center_lon": 20.6850, "radius": 450}
+      {"name": "Trg Srpskih ratnika", "code": "9361", "center_lat": 43.7250, "center_lon": 20.6860, "radius": 150},
+      {"name": "Omladinska", "code": "9361", "center_lat": 43.7240, "center_lon": 20.6870, "radius": 200},
+      {"name": "Cara Dušana", "code": "9362", "center_lat": 43.7220, "center_lon": 20.6850, "radius": 250},
+     
+      {"name": "Uži centar", "code": "9361", "center_lat": 43.7245, "center_lon": 20.6865, "radius": 400},
+      {"name": "Širi centar", "code": "9362", "center_lat": 43.7210, "center_lon": 20.6840, "radius": 700}
     ],
     "garages": []
   },
@@ -568,8 +702,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Vidovdanska", "code": "9371", "center_lat": 43.5820, "center_lon": 21.3250, "radius": 300},
-      {"name": "Balkanska", "code": "9372", "center_lat": 43.5850, "center_lon": 21.3220, "radius": 450}
+      {"name": "Vidovdanska", "code": "9371", "center_lat": 43.5820, "center_lon": 21.3250, "radius": 200},
+      {"name": "Nemanjina", "code": "9371", "center_lat": 43.5810, "center_lon": 21.3280, "radius": 200},
+      {"name": "Balkanska", "code": "9372", "center_lat": 43.5850, "center_lon": 21.3220, "radius": 250},
+     
+      {"name": "Uži centar", "code": "9371", "center_lat": 43.5815, "center_lon": 21.3260, "radius": 400},
+      {"name": "Širi centar", "code": "9372", "center_lat": 43.5840, "center_lon": 21.3210, "radius": 700}
     ],
     "garages": []
   },
@@ -586,8 +724,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kneginje Milice", "code": "9351", "center_lat": 43.9800, "center_lon": 21.2610, "radius": 350},
-      {"name": "Kneza Lazara", "code": "9352", "center_lat": 43.9780, "center_lon": 21.2580, "radius": 450}
+      {"name": "Kneginje Milice", "code": "9351", "center_lat": 43.9800, "center_lon": 21.2610, "radius": 200},
+      {"name": "Skver Omladine", "code": "9351", "center_lat": 43.9820, "center_lon": 21.2590, "radius": 200},
+      {"name": "Kneza Lazara", "code": "9352", "center_lat": 43.9780, "center_lon": 21.2580, "radius": 250},
+     
+      {"name": "Uži centar", "code": "9351", "center_lat": 43.9810, "center_lon": 21.2600, "radius": 400},
+      {"name": "Širi centar", "code": "9352", "center_lat": 43.9770, "center_lon": 21.2560, "radius": 700}
     ],
     "garages": []
   },
@@ -604,11 +746,14 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kralja Petra I", "code": "9355", "center_lat": 43.8660, "center_lon": 21.4160, "radius": 400}
+      {"name": "Kralja Petra I", "code": "9355", "center_lat": 43.8660, "center_lon": 21.4160, "radius": 200},
+      {"name": "Vožda Karađorđa", "code": "9355", "center_lat": 43.8680, "center_lon": 21.4180, "radius": 200},
+     
+      {"name": "Sve zone (Centar)", "code": "9355", "center_lat": 43.8670, "center_lon": 21.4170, "radius": 600}
     ],
     "garages": []
   },
-  "Cuprija": {
+    "Cuprija": {
     "name": "Ćuprija",
     "lat": 43.9333,
     "lon": 21.3667,
@@ -621,7 +766,10 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Cara Lazara", "code": "9356", "center_lat": 43.9330, "center_lon": 21.3660, "radius": 400}
+      {"name": "Cara Lazara", "code": "9356", "center_lat": 43.9330, "center_lon": 21.3660, "radius": 200},
+      {"name": "Kneza Miloša", "code": "9356", "center_lat": 43.9350, "center_lon": 21.3640, "radius": 200},
+     
+      {"name": "Sve zone (Centar)", "code": "9356", "center_lat": 43.9335, "center_lon": 21.3655, "radius": 600}
     ],
     "garages": []
   },
@@ -638,8 +786,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Bulevar Oslobođenja", "code": "9161", "center_lat": 42.9940, "center_lon": 21.9440, "radius": 450},
-      {"name": "Koste Stamenkovića", "code": "9162", "center_lat": 42.9960, "center_lon": 21.9460, "radius": 400}
+      {"name": "Bulevar Oslobođenja", "code": "9161", "center_lat": 42.9940, "center_lon": 21.9440, "radius": 200},
+      {"name": "Koste Stamenkovića", "code": "9162", "center_lat": 42.9960, "center_lon": 21.9460, "radius": 200},
+      {"name": "Južnomoravskih brigada", "code": "9162", "center_lat": 42.9910, "center_lon": 21.9420, "radius": 250},
+     
+      {"name": "Centar (I Zona)", "code": "9161", "center_lat": 42.9945, "center_lon": 21.9435, "radius": 450},
+      {"name": "Širi centar (II Zona)", "code": "9162", "center_lat": 42.9930, "center_lon": 21.9400, "radius": 700}
     ],
     "garages": []
   },
@@ -656,8 +808,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kralja Stefana Prvovenčanog", "code": "9171", "center_lat": 42.5539, "center_lon": 21.9025, "radius": 400},
-      {"name": "Cara Dušana", "code": "9172", "center_lat": 42.5560, "center_lon": 21.9050, "radius": 350}
+      {"name": "Kralja Stefana Prvovenčanog", "code": "9171", "center_lat": 42.5539, "center_lon": 21.9025, "radius": 200},
+      {"name": "Cara Dušana", "code": "9172", "center_lat": 42.5560, "center_lon": 21.9050, "radius": 200},
+      {"name": "Partizanska", "code": "9172", "center_lat": 42.5510, "center_lon": 21.9000, "radius": 250},
+     
+      {"name": "Uži centar", "code": "9171", "center_lat": 42.5545, "center_lon": 21.9015, "radius": 400},
+      {"name": "Širi centar", "code": "9172", "center_lat": 42.5550, "center_lon": 21.9040, "radius": 750}
     ],
     "garages": []
   },
@@ -674,8 +830,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Tabačka čaršija", "code": "9121", "center_lat": 44.6200, "center_lon": 21.1890, "radius": 350},
-      {"name": "Trg oslobođenja", "code": "9122", "center_lat": 44.6220, "center_lon": 21.1920, "radius": 300}
+      {"name": "Tabačka čaršija", "code": "9121", "center_lat": 44.6200, "center_lon": 21.1890, "radius": 150},
+      {"name": "Trg oslobođenja", "code": "9122", "center_lat": 44.6220, "center_lon": 21.1920, "radius": 150},
+      {"name": "Moše Pijade", "code": "9122", "center_lat": 44.6240, "center_lon": 21.1950, "radius": 200},
+     
+      {"name": "Uži centar", "code": "9121", "center_lat": 44.6205, "center_lon": 21.1900, "radius": 400},
+      {"name": "Širi centar", "code": "9122", "center_lat": 44.6230, "center_lon": 21.1930, "radius": 700}
     ],
     "garages": []
   },
@@ -692,8 +852,11 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Srpskih vladara", "code": "9101", "center_lat": 43.1550, "center_lon": 22.5850, "radius": 400},
-      {"name": "Knjaza Miloša", "code": "9102", "center_lat": 43.1580, "center_lon": 22.5880, "radius": 350}
+      {"name": "Srpskih vladara", "code": "9101", "center_lat": 43.1550, "center_lon": 22.5850, "radius": 200},
+      {"name": "Knjaza Miloša", "code": "9102", "center_lat": 43.1580, "center_lon": 22.5880, "radius": 200},
+     
+      {"name": "Centar", "code": "9101", "center_lat": 43.1560, "center_lon": 22.5860, "radius": 400},
+      {"name": "Širi centar", "code": "9102", "center_lat": 43.1590, "center_lon": 22.5890, "radius": 700}
     ],
     "garages": []
   },
@@ -710,7 +873,11 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Jug Bogdanova", "code": "9271", "center_lat": 43.2350, "center_lon": 21.5860, "radius": 350}
+      {"name": "Jug Bogdanova", "code": "9271", "center_lat": 43.2350, "center_lon": 21.5860, "radius": 200},
+      {"name": "Ratka Pavlovića", "code": "9272", "center_lat": 43.2380, "center_lon": 21.5890, "radius": 200},
+     
+      {"name": "Uži centar", "code": "9271", "center_lat": 43.2360, "center_lon": 21.5870, "radius": 350},
+      {"name": "Širi centar", "code": "9272", "center_lat": 43.2390, "center_lon": 21.5900, "radius": 650}
     ],
     "garages": []
   },
@@ -727,7 +894,11 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Moše Pijade", "code": "9301", "center_lat": 44.0720, "center_lon": 22.1030, "radius": 400}
+      {"name": "Moše Pijade", "code": "9301", "center_lat": 44.0720, "center_lon": 22.1030, "radius": 200},
+      {"name": "Đorđa Vajferta", "code": "9302", "center_lat": 44.0750, "center_lon": 22.1060, "radius": 200},
+     
+      {"name": "Centar", "code": "9301", "center_lat": 44.0730, "center_lon": 22.1040, "radius": 400},
+      {"name": "Širi centar", "code": "9302", "center_lat": 44.0760, "center_lon": 22.1070, "radius": 700}
     ],
     "garages": []
   },
@@ -744,7 +915,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Nikole Pašića", "code": "9191", "center_lat": 43.9040, "center_lon": 22.2740, "radius": 350}
+      {"name": "Nikole Pašića", "code": "9191", "center_lat": 43.9040, "center_lon": 22.2740, "radius": 200},
+      {"name": "Ljube Nešića", "code": "9191", "center_lat": 43.9020, "center_lon": 22.2720, "radius": 200},
+      {"name": "Krfska", "code": "9192", "center_lat": 43.9060, "center_lon": 22.2760, "radius": 200},
+     
+      {"name": "Uži centar", "code": "9191", "center_lat": 43.9035, "center_lon": 22.2735, "radius": 400},
+      {"name": "Širi centar", "code": "9192", "center_lat": 43.9055, "center_lon": 22.2750, "radius": 700}
     ],
     "garages": []
   },
@@ -761,7 +937,10 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Valterova", "code": "9331", "center_lat": 43.3850, "center_lon": 19.6580, "radius": 450}
+      {"name": "Valterova", "code": "9331", "center_lat": 43.3850, "center_lon": 19.6580, "radius": 200},
+      {"name": "Sandžačkih brigada", "code": "9331", "center_lat": 43.3870, "center_lon": 19.6600, "radius": 200},
+     
+      {"name": "Sve zone (Centar)", "code": "9331", "center_lat": 43.3860, "center_lon": 19.6590, "radius": 600}
     ],
     "garages": []
   },
@@ -778,8 +957,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Karađorđeva", "code": "9261", "center_lat": 44.6620, "center_lon": 20.9250, "radius": 400},
-      {"name": "Despota Đurđa", "code": "9262", "center_lat": 44.6650, "center_lon": 20.9280, "radius": 350}
+      {"name": "Trg Republike", "code": "9261", "center_lat": 44.6620, "center_lon": 20.9250, "radius": 150},
+      {"name": "Karađorđeva", "code": "9261", "center_lat": 44.6600, "center_lon": 20.9220, "radius": 200},
+      {"name": "Despota Đurđa", "code": "9262", "center_lat": 44.6650, "center_lon": 20.9280, "radius": 200},
+     
+      {"name": "Uži centar", "code": "9261", "center_lat": 44.6615, "center_lon": 20.9240, "radius": 400},
+      {"name": "Širi centar", "code": "9262", "center_lat": 44.6640, "center_lon": 20.9270, "radius": 700}
     ],
     "garages": []
   },
@@ -796,7 +979,10 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Cara Dušana", "code": "9375", "center_lat": 43.6160, "center_lon": 21.0160, "radius": 400}
+      {"name": "Cara Dušana", "code": "9375", "center_lat": 43.6160, "center_lon": 21.0160, "radius": 200},
+      {"name": "Kneza Lazara", "code": "9375", "center_lat": 43.6180, "center_lon": 21.0180, "radius": 200},
+     
+      {"name": "Sve zone (Centar)", "code": "9375", "center_lat": 43.6170, "center_lon": 21.0170, "radius": 600}
     ],
     "garages": []
   },
@@ -813,7 +999,10 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Prvog srpskog ustanka", "code": "9265", "center_lat": 44.3660, "center_lon": 20.9500, "radius": 400}
+      {"name": "Prvog srpskog ustanka", "code": "9265", "center_lat": 44.3660, "center_lon": 20.9500, "radius": 200},
+      {"name": "Svetog Save", "code": "9265", "center_lat": 44.3640, "center_lon": 20.9480, "radius": 200},
+     
+      {"name": "Sve zone (Centar)", "code": "9265", "center_lat": 44.3650, "center_lon": 20.9490, "radius": 600}
     ],
     "garages": []
   },
@@ -830,25 +1019,12 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Stevana Nemanje", "code": "9201", "center_lat": 43.1420, "center_lon": 20.5180, "radius": 450},
-      {"name": "28. novembra", "code": "9202", "center_lat": 43.1450, "center_lon": 20.5200, "radius": 400}
-    ],
-    "garages": []
-  },
-  "Lazarevac": {
-    "name": "Lazarevac",
-    "lat": 44.3833,
-    "lon": 20.2667,
-    "city_radius": 4000,
-    "codes": ["9115", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
-    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
-    "dailyCode": "9117",
-    "dailyInfo": "Sve zone",
-    "dailyAllowedIndexes": [0],
-    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
-    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
-    "streets": [
-      {"name": "Karađorđeva", "code": "9115", "center_lat": 44.3830, "center_lon": 20.2660, "radius": 400}
+      {"name": "Stevana Nemanje", "code": "9201", "center_lat": 43.1420, "center_lon": 20.5180, "radius": 200},
+      {"name": "28. novembra", "code": "9202", "center_lat": 43.1450, "center_lon": 20.5200, "radius": 200},
+      {"name": "AVNOJ-a", "code": "9202", "center_lat": 43.1400, "center_lon": 20.5150, "radius": 200},
+     
+      {"name": "Uži centar", "code": "9201", "center_lat": 43.1422, "center_lon": 20.5186, "radius": 450},
+      {"name": "Širi centar", "code": "9202", "center_lat": 43.1440, "center_lon": 20.5220, "radius": 700}
     ],
     "garages": []
   },
@@ -865,8 +1041,157 @@
     "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
     "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
     "streets": [
-      {"name": "Kralja Petra Prvog", "code": "9116", "center_lat": 44.4440, "center_lon": 20.6940, "radius": 400}
+      {"name": "Kralja Petra Prvog", "code": "9116", "center_lat": 44.4440, "center_lon": 20.6940, "radius": 250},
+      {"name": "Janka Katića", "code": "9116", "center_lat": 44.4460, "center_lon": 20.6920, "radius": 200},
+     
+      {"name": "Sve zone (Centar)", "code": "9116", "center_lat": 44.4445, "center_lon": 20.6935, "radius": 700}
     ],
     "garages": []
+  },
+    "Lazarevac": {
+    "name": "Lazarevac",
+    "lat": 44.3833,
+    "lon": 20.2667,
+    "city_radius": 4000,
+    "codes": ["9115", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9117",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Karađorđeva", "code": "9115", "center_lat": 44.3830, "center_lon": 20.2660, "radius": 200},
+      {"name": "Dositeja Obradovića", "code": "9115", "center_lat": 44.3810, "center_lon": 20.2640, "radius": 200},
+     
+      {"name": "Sve zone (Centar)", "code": "9115", "center_lat": 44.3820, "center_lon": 20.2650, "radius": 600}
+    ],
+    "garages": []
+  },
+  "Kopaonik": {
+    "name": "Kopaonik",
+    "lat": 43.2863,
+    "lon": 20.8103,
+    "city_radius": 6000,
+    "codes": ["9368", "9369", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Konaci", "Sunčana dolina", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9370",
+    "dailyInfo": "Dnevna karta - Kopaonik",
+    "dailyAllowedIndexes": [0, 1],
+    "hoursWorkday": "Pon-Ned: 00:00 - 24:00",
+    "hoursWeekend": "Pon-Ned: 00:00 - 24:00",
+    "streets": [
+      {"name": "Konaci", "code": "9368", "center_lat": 43.2863, "center_lon": 20.8103, "radius": 250},
+      {"name": "Jaram i Sunčana", "code": "9369", "center_lat": 43.2950, "center_lon": 20.8250, "radius": 400},
+     
+      {"name": "Šira zona Konaka", "code": "9368", "center_lat": 43.2860, "center_lon": 20.8100, "radius": 800},
+      {"name": "Šira zona Sunčana dolina", "code": "9369", "center_lat": 43.2950, "center_lon": 20.8250, "radius": 1500}
+    ],
+    "garages": [
+      {"name": "Garaža Kopaonik", "query": "garaza Kopaonik", "lat": 43.2855, "lon": 20.8090}
+    ]
+  },
+  "Sokobanja": {
+    "name": "Sokobanja",
+    "lat": 43.6444,
+    "lon": 21.8756,
+    "city_radius": 4000,
+    "codes": ["9111", "9112", "9113", "9114", "9116", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Crvena", "Žuta", "Zelena", "Ljubičasta (A)", "Bela (B)", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9118",
+    "dailyInfo": "Samo Plava zona",
+    "dailyAllowedIndexes": [0, 1, 2],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Svetog Save", "code": "9111", "center_lat": 43.6444, "center_lon": 21.8756, "radius": 200},
+      {"name": "Alekse Markišića", "code": "9112", "center_lat": 43.6460, "center_lon": 21.8780, "radius": 200},
+     
+      {"name": "Uži centar (Crvena)", "code": "9111", "center_lat": 43.6450, "center_lon": 21.8760, "radius": 400},
+      {"name": "Širi centar (Žuta)", "code": "9112", "center_lat": 43.6460, "center_lon": 21.8780, "radius": 800}
+    ],
+    "garages": []
+  },
+  "BajinaBasta": {
+    "name": "Bajina Bašta",
+    "lat": 43.9706,
+    "lon": 19.5675,
+    "city_radius": 5000,
+    "codes": ["8291", "8292", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Crvena", "Žuta", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "8293",
+    "dailyInfo": "Samo Žuta Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Kneza Milana Obrenovića", "code": "8291", "center_lat": 43.9706, "center_lon": 19.5675, "radius": 200},
+      {"name": "Svetosavska", "code": "8292", "center_lat": 43.9730, "center_lon": 19.5700, "radius": 200},
+     
+      {"name": "Uži centar", "code": "8291", "center_lat": 43.9710, "center_lon": 19.5680, "radius": 400},
+      {"name": "Širi centar", "code": "8292", "center_lat": 43.9730, "center_lon": 19.5700, "radius": 700}
+    ],
+    "garages": []
+  },
+  "SrebrnoJezero": {
+    "name": "Srebrno jezero",
+    "lat": 44.7644,
+    "lon": 21.4936,
+    "city_radius": 3000,
+    "codes": ["8273", "", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Jedinstvena", "", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "8274",
+    "dailyInfo": "Sve zone",
+    "dailyAllowedIndexes": [0],
+    "hoursWorkday": "Pon-Ned: 07:00 - 21:00",
+    "hoursWeekend": "Pon-Ned: 07:00 - 21:00",
+    "streets": [
+      {"name": "Jezersko šetalište", "code": "8273", "center_lat": 44.7644, "center_lon": 21.4936, "radius": 300},
+     
+      {"name": "Sve zone", "code": "8273", "center_lat": 44.7650, "center_lon": 21.4940, "radius": 1500}
+    ],
+    "garages": []
+  },
+  "NovaVaros": {
+    "name": "Nova Varoš",
+    "lat": 43.4625,
+    "lon": 19.8169,
+    "city_radius": 5000,
+    "codes": ["8511", "8512", "", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["I Zona", "II Zona", "", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "8513",
+    "dailyInfo": "Samo II Zona",
+    "dailyAllowedIndexes": [1],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub: 07:00 - 14:00 | Ned: Besplatno",
+    "streets": [
+      {"name": "Karađorđeva", "code": "8511", "center_lat": 43.4625, "center_lon": 19.8169, "radius": 200},
+      {"name": "Trg Vojvode Petra", "code": "8512", "center_lat": 43.4650, "center_lon": 19.8190, "radius": 200},
+     
+      {"name": "Uži centar", "code": "8511", "center_lat": 43.4630, "center_lon": 19.8175, "radius": 400},
+      {"name": "Širi centar", "code": "8512", "center_lat": 43.4650, "center_lon": 19.8200, "radius": 700}
+    ],
+    "garages": []
+  },
+  "Palic": {
+    "name": "Palić",
+    "lat": 46.0981,
+    "lon": 19.7578,
+    "city_radius": 4000,
+    "codes": ["9241", "9242", "9243", "", "", "", "", "", "RAMPA", "AIRPORT"],
+    "zones": ["Crvena", "Žuta", "Zelena", "", "", "", "", "", "Garaže", "Aerodromi"],
+    "dailyCode": "9249",
+    "dailyInfo": "Žuta i Zelena",
+    "dailyAllowedIndexes": [1, 2],
+    "hoursWorkday": "Pon-Pet: 07:00 - 21:00",
+    "hoursWeekend": "Sub-Ned: 07:00 - 14:00",
+    "streets": [
+      {"name": "Jozefa Hegediša", "code": "9241", "center_lat": 46.0950, "center_lon": 19.7600, "radius": 250},
+      {"name": "Splitska Aleja", "code": "9242", "center_lat": 46.0981, "center_lon": 19.7578, "radius": 250},
+     
+      {"name": "Uži turistički pojas", "code": "9241", "center_lat": 46.0955, "center_lon": 19.7605, "radius": 500},
+      {"name": "Širi obod Palića", "code": "9242", "center_lat": 46.0980, "center_lon": 19.7580, "radius": 900}
+    ],
+    "garages": []
+      }
   }
-}
