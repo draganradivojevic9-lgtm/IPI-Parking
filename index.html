@@ -325,13 +325,13 @@
                     locEl.innerText = t.gpsOff;
                 } else if (locEl.innerText === TRANSLATE['SRB'].locating || locEl.innerText === TRANSLATE['ENG'].locating) {
                     locEl.innerText = t.locating;
-                } else if (isFreeParking) {
+                  } else if (isFreeParking) {
                     if (realPlaceName) {
                         let latName = cyrToLat(realPlaceName);
                         let cleanedPlace = latName.replace(/opština\s*|opstina\s*/gi, "").trim();
-                        locEl.innerHTML = `📍 <span style="visibility:hidden;">📍</span><br><span class="free-badge">(${t.freePark})</span>`;
-                    } else {
                         locEl.innerHTML = `📍 ${cleanedPlace} <span style="visibility:hidden;">📍</span><br><span class="free-badge">(${t.freePark})</span>`;
+                    } else {
+                        locEl.innerHTML = `📍 <span style="visibility:hidden;">📍</span><br><span class="free-badge">(${t.freePark})</span>`;
                     }
                 }
             }
@@ -429,10 +429,11 @@
             );
         }
 
-        async function matchLocation(lat, lon) {
-            currentLat = lat; currentLon = lon; 
+         async function matchLocation(lat, lon) {
+            currentLat = lat; currentLon = lon;
             if (Object.keys(parkingData).length === 0) { await loadParkingData(); }
-            let minDst = Infinity; let closestCity = null; detectedCode = null; detectedStreetName = ""; realPlaceName = ""; isFreeParking = true;
+           
+            let minDst = Infinity; let closestCity = null; detectedCode = null; detectedStreetName = ""; isFreeParking = true;
            
             for (const key in parkingData) {
                 let city = parkingData[key];
@@ -444,13 +445,13 @@
             if (closestCity) {
                 currentCityKey = closestCity; isFreeParking = false;
                 let cityName = cyrToLat(parkingData[closestCity].name).replace(/opština\s*|opstina\s*/gi, "").trim();
-                document.getElementById('loc').innerHTML = "📍 " + cityName + " <span style='visibility:hidden;'>📍</span>";
                
-                           if (parkingData[closestCity].streets) {
+                document.getElementById('loc').innerHTML = `📍 ${cityName} <span style="visibility:hidden;">📍</span>`;
+               
+                if (parkingData[closestCity].streets) {
                     let matches = [];
                     for (const zone of parkingData[closestCity].streets) {
                         if (getDistanceInMeters(lat, lon, zone.center_lat, zone.center_lon) <= zone.radius) {
-                            // Izbegavamo dupliranje istih zona u listi preklapanja
                             if (!matches.some(m => m.code === zone.code)) {
                                 matches.push({ code: zone.code, name: cyrToLat(zone.name) });
                             }
@@ -459,15 +460,12 @@
                     detectedZones = matches;
                    
                     if (matches.length === 1) {
-                        // Čista situacija - samo jedna zona detektovana
                         detectedCode = matches[0].code;
                         detectedStreetName = matches[0].name;
                     } else if (matches.length > 1) {
-                        // Korisnik je na granici više zona
                         detectedCode = "BORDER";
                         detectedStreetName = "GRANICA ZONA";
                     } else {
-                        // Nije detektovana nijedna specifična ulica/zona u gradu
                         detectedCode = null;
                         detectedStreetName = "";
                     }
@@ -476,8 +474,16 @@
                 currentCityKey = null; isFreeParking = true;
                 if (currentSpeed <= 1.5 && navigator.onLine) {
                     try {
-                        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10`);
-                        if (res.ok) { const data = await res.json(); realPlaceName = data.address.city || data.address.town || data.address.village || data.address.municipality || ""; }
+                        const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+                        if (res.ok) {
+                            const data = await res.json();
+                           
+                            let novoMesto = data.address.village || data.address.hamlet || data.address.town || data.address.city || data.address.municipality;
+                           
+                            if (novoMesto) {
+                                realPlaceName = novoMesto;
+                            }
+                        }
                     } catch(e) {}
                 }
             }
