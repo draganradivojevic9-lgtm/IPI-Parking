@@ -1,6 +1,6 @@
 {
   "name": "IPI Parking",
-  "short_name": "IPI",
+  "short_name": "ParkingApp",
   "description": "Najbrže plaćanje parkinga",
   "start_url": "index.html",
   "display": "standalone",
