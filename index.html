@@ -556,34 +556,61 @@
             document.getElementById('active-timer').classList.remove('visible');
         }
 
-               function checkActiveTimer() {
+                    function checkActiveTimer() {
             const timerBar = document.getElementById('active-timer');
             const timerText = document.getElementById('timer-text');
             const radnoVremeEl = document.getElementById('radno-vreme');
-            
+           
             const target = localStorage.getItem('ipi_timer_target');
 
             if (!target) {
                 timerBar.classList.remove('visible');
-                if (radnoVremeEl) radnoVremeEl.style.display = 'block'; 
+                if (radnoVremeEl) radnoVremeEl.style.display = 'block';
                 return;
             }
            
             const diff = target - Date.now();
+           
             if (diff > 0 && diff <= 300000 && !localStorage.getItem('ipi_notified')) {
-                if (Notification.permission === "granted") { new Notification("IPI Parking", { body: "Parking vam ističe za 5 minuta!" }); localStorage.setItem('ipi_notified', 'true'); }
+                if (Notification.permission === "granted") {
+                   
+                    let trzajPattern = [150, 100, 150, 400, 150, 100, 150, 400, 150, 100, 150];
+
+                    if ("vibrate" in navigator) {
+                        navigator.vibrate(trzajPattern);
+                    }
+                   
+                    let notifBody = lang === 'SRB' ? "Parking vam ističe za 5 minuta!" : "Your parking expires in 5 minutes!";
+                   
+                    new Notification("IPI Parking", {
+                        body: notifBody,
+                        icon: "icon-192.png",
+                        badge: "icon-192.png",
+                        vibrate: trzajPattern
+                    });
+                   
+                    localStorage.setItem('ipi_notified', 'true');
+                }
             }
 
+            
             if (diff <= 0) {
                 localStorage.removeItem('ipi_timer_target');
                 localStorage.removeItem('ipi_notified');
                 timerBar.classList.remove('visible');
-                if (radnoVremeEl) radnoVremeEl.style.display = 'block'; 
-            } else {
-                timerBar.classList.add('visible');
-                if (radnoVremeEl) radnoVremeEl.style.display = 'none'; 
+                if (radnoVremeEl) radnoVremeEl.style.display = 'block';
                
-                const mins = Math.floor(diff / 60000); const secs = Math.floor((diff % 60000) / 1000);
+                
+                if ("vibrate" in navigator && Notification.permission === "granted") {
+                    navigator.vibrate([1000]);
+                }
+            } else {
+                
+                timerBar.classList.add('visible');
+                if (radnoVremeEl) radnoVremeEl.style.display = 'none';
+               
+                const mins = Math.floor(diff / 60000);
+                const secs = Math.floor((diff % 60000) / 1000);
                 timerText.innerText = TRANSLATE[lang].activePark + `${mins}:${secs < 10 ? '0' : ''}${secs}`;
             }
         }
