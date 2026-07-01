@@ -15,41 +15,59 @@
             --bg: #f2f2f7; --card-gray: #ffffff; --text: #000000;
             --nav-bg: #ffffff; --border: #d1d1d6; --input-bg: #e5e5ea;
         }
+       
+        /* ZAKLJUČAVANJE SKROLOVANJA NA NIVOU CELOG EKRANA */
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; }
+        html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; transition: background 0.3s, color 0.3s; }
        
-        body { background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; transition: background 0.3s, color 0.3s;}
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            max-width: 430px;
+            margin: 0 auto;
+            position: relative;
+        }
        
-        .app-container { max-width: 430px; margin: 0 auto; width: 100%; position: relative; min-height: 100vh; padding-bottom: 80px; }
-       
-        .top-bar { display: flex; justify-content: center; align-items: center; padding: 20px 16px 10px 16px; }
+        .top-bar { flex-shrink: 0; display: flex; justify-content: center; align-items: center; padding: 20px 16px 10px 16px; }
         .page-title { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
-        .scrollable-content { padding: 10px 16px 20px 16px; }
        
-        
-        .input-label { font-size: 12px; color: #8e8e93; margin-bottom: 6px; margin-left: 4px; }
-        .vehicle-row { display: flex; align-items: center; margin-bottom: 16px; }
+        /* GLAVNI KONTEJNER (bez skrolovanja) */
+        .fixed-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 5px 16px 70px 16px; /* 70px ostavlja mesta za navigaciju */
+            overflow: hidden;
+        }
+       
+        /* STILOVI ZA VOZILA (Zategnuti razmaci) */
+        .input-label { font-size: 11px; color: #8e8e93; margin-bottom: 2px; margin-left: 4px; }
+        .vehicle-row { display: flex; align-items: center; margin-bottom: 8px; }
         .inputs-wrapper { display: flex; flex: 1; background: var(--input-bg); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
-        .inputs-wrapper input { flex: 1; background: transparent; border: none; color: var(--text); padding: 14px 12px; font-size: 16px; outline: none; width: 50%; user-select: auto; }
-        .inputs-wrapper input::placeholder { color: #636366; }
+        .inputs-wrapper input { flex: 1; background: transparent; border: none; color: var(--text); padding: 10px 12px; font-size: 15px; outline: none; width: 50%; user-select: auto; }
+        .inputs-wrapper input::placeholder { color: #8e8e93; }
         .divider { width: 1px; background: var(--border); }
-        .delete-btn { background: var(--input-bg); border: 1px solid var(--border); color: var(--red); border-radius: 50%; width: 38px; height: 38px; margin-left: 10px; display: flex; justify-content: center; align-items: center; font-size: 14px; cursor: pointer; flex-shrink: 0; transition: 0.2s; }
+        .delete-btn { background: var(--input-bg); border: 1px solid var(--border); color: var(--red); border-radius: 50%; width: 32px; height: 32px; margin-left: 10px; display: flex; justify-content: center; align-items: center; font-size: 12px; cursor: pointer; flex-shrink: 0; transition: 0.2s; }
         .delete-btn:active { opacity: 0.6; transform: scale(0.9); }
        
-        .save-btn { background: var(--green); color: #000; width: 100%; padding: 16px; border-radius: 12px; border: none; font-size: 16px; font-weight: 700; margin-top: 10px; cursor: pointer; text-transform: uppercase; transition: 0.2s; letter-spacing: 0.5px; }
+        /* GRUPA NA DNU (Dugme + Kartica) */
+        .action-group { margin-top: auto; } /* Auto margina ih gura na samo dno iznad navigacije */
+       
+        .save-btn { background: var(--green); color: #000; width: 100%; padding: 12px; border-radius: 12px; border: none; font-size: 15px; font-weight: 700; cursor: pointer; text-transform: uppercase; transition: 0.2s; letter-spacing: 0.5px; }
         .save-btn:active { transform: scale(0.97); opacity: 0.9; }
        
-        
-        .credit-card { background: var(--input-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-top: 20px; display: flex; align-items: center; cursor: pointer; transition: 0.2s; }
+        .credit-card { background: var(--input-bg); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; margin-top: 10px; display: flex; align-items: center; cursor: pointer; transition: 0.2s; }
         .credit-card:active { transform: scale(0.97); opacity: 0.8; }
-        .credit-icon { font-size: 22px; margin-right: 12px; display: flex; align-items: center; justify-content: center; }
-        .credit-text { font-size: 16px; font-weight: 600; flex: 1; color: var(--text); }
-        .credit-arrow { font-size: 20px; color: #8e8e93; }
+        .credit-icon { font-size: 20px; margin-right: 12px; display: flex; align-items: center; justify-content: center; }
+        .credit-text { font-size: 15px; font-weight: 600; flex: 1; color: var(--text); }
+        .credit-arrow { font-size: 18px; color: #8e8e93; }
 
-        
+        /* PICKER (BOTTOM SHEET MODAL) */
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 999; opacity: 0; visibility: hidden; transition: 0.3s ease; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
        
-        .bottom-sheet { position: fixed; bottom: -100%; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: var(--card-gray); border-radius: 20px 20px 0 0; z-index: 1000; transition: bottom 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); padding: 15px 16px 40px 16px; box-shadow: 0 -5px 15px rgba(0,0,0,0.2); }
+        .bottom-sheet { position: fixed; bottom: -100%; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: var(--card-gray); border-radius: 20px 20px 0 0; z-index: 1000; transition: bottom 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); padding: 15px 16px 40px 16px; box-shadow: 0 -5px 15px rgba(0,0,0,0.2); max-height: 80vh; overflow-y: auto; }
         .bottom-sheet.active { bottom: 0; }
        
         .sheet-handle { width: 40px; height: 5px; background: #8e8e93; border-radius: 3px; margin: 0 auto 15px auto; opacity: 0.5; }
@@ -72,7 +90,11 @@
     <div class="app-container">
         <div class="top-bar"><div class="page-title" id="page-title">Podešavanja vozila</div></div>
        
-        <div class="scrollable-content" id="vehicles-container"></div>
+        <!-- Glavni deo sada koristi Flexbox magiju da ugura elemente bez skrola -->
+        <div class="fixed-content">
+            <div id="vehicles-container"></div>
+            <div class="action-group" id="action-container"></div>
+        </div>
        
         <div class="bottom-container">
             <nav class="nav">
@@ -84,6 +106,7 @@
         </div>
     </div>
 
+    <!-- PICKER (MODAL) KOJI ISKAČE ODOZDO -->
     <div class="modal-overlay" id="picker-overlay" onclick="closePicker()"></div>
     <div class="bottom-sheet" id="picker-sheet">
         <div class="sheet-handle"></div>
@@ -103,8 +126,16 @@
 
     <script>
         const TRANSLATE = {
-            SRB: { title: "Podešavanja vozila", labels: "Ime vozila | Tablica", namePh: "npr. GOLF", platePh: "npr. BG123AB", saveBtn: "SAČUVAJ", savedBtn: "SAČUVANO ✔", home: "Početna", hist: "Istorija", about: "O nama", set: "Podešavanja", topupBtn: "Dopuni kredit", pickerTitle: "Odaberite operatera" },
-            ENG: { title: "Vehicle Settings", labels: "Vehicle Name | Plate", namePh: "e.g. GOLF", platePh: "e.g. BG123AB", saveBtn: "SAVE", savedBtn: "SAVED ✔", home: "Home", hist: "History", about: "About Us", set: "Settings", topupBtn: "Top Up Credit", pickerTitle: "Select Provider" }
+            SRB: {
+                title: "Podešavanja vozila", labels: "Ime vozila | Tablica", namePh: "npr. GOLF", platePh: "npr. BG123AB",
+                saveBtn: "SAČUVAJ", savedBtn: "SAČUVANO ✔", home: "Početna", hist: "Istorija", about: "O nama", set: "Podešavanja",
+                topupBtn: "Dopuni kredit", pickerTitle: "Odaberite operatera", alertMsg: "Odabrali ste: "
+            },
+            ENG: {
+                title: "Vehicle Settings", labels: "Vehicle Name | Plate", namePh: "e.g. GOLF", platePh: "e.g. BG123AB",
+                saveBtn: "SAVE", savedBtn: "SAVED ✔", home: "Home", hist: "History", about: "About Us", set: "Settings",
+                topupBtn: "Top Up Credit", pickerTitle: "Select Provider", alertMsg: "You selected: "
+            }
         };
 
         let lang = localStorage.getItem('ipi_lang') || 'SRB';
@@ -128,11 +159,14 @@
         }
 
         function renderInputs() {
-            const container = document.getElementById('vehicles-container');
+            const vContainer = document.getElementById('vehicles-container');
+            const aContainer = document.getElementById('action-container');
             const t = TRANSLATE[lang];
-            let html = "";
+           
+            // Ispisujemo samo polja za vozila
+            let htmlVozila = "";
             for(let i=1; i<=5; i++) {
-                html += `<div class="input-label">${t.labels}</div>
+                htmlVozila += `<div class="input-label">${t.labels}</div>
                 <div class="vehicle-row">
                     <div class="inputs-wrapper">
                         <input type="text" id="v-name-${i}" placeholder="${t.namePh}" oninput="saveData(false)">
@@ -142,19 +176,17 @@
                     <div class="delete-btn" onclick="clearRow(${i})">❌</div>
                 </div>`;
             }
+            vContainer.innerHTML = htmlVozila;
            
-            
-            html += `<button class="save-btn" id="save-btn" onclick="saveData(true)">${t.saveBtn}</button>`;
-           
-            
-            html += `
-            <div class="credit-card" onclick="openPicker()">
-                <div class="credit-icon">💳</div>
-                <div class="credit-text">${t.topupBtn}</div>
-                <div class="credit-arrow">›</div>
-            </div>`;
-           
-            container.innerHTML = html;
+            // Ispisujemo dugmiće koji će biti fiksirani na dnu
+            aContainer.innerHTML = `
+                <button class="save-btn" id="save-btn" onclick="saveData(true)">${t.saveBtn}</button>
+                <div class="credit-card" onclick="openPicker()">
+                    <div class="credit-icon">💳</div>
+                    <div class="credit-text">${t.topupBtn}</div>
+                    <div class="credit-arrow">›</div>
+                </div>
+            `;
         }
 
         function loadData() {
@@ -208,7 +240,7 @@
             }
         }
 
-        
+        /* FUNKCIJE ZA PICKER (BOTTOM SHEET) */
         function openPicker() {
             document.getElementById('picker-overlay').classList.add('active');
             document.getElementById('picker-sheet').classList.add('active');
@@ -219,12 +251,10 @@
             document.getElementById('picker-sheet').classList.remove('active');
         }
 
-        
         function handlePickerSelection(operater) {
             closePicker();
-            
             setTimeout(() => {
-                alert("Odabrali ste: " + operater + ". Ovde će se povezati USSD kod ili SMS logika.");
+                alert(TRANSLATE[lang].alertMsg + operater);
             }, 300);
         }
 
