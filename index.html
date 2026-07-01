@@ -65,6 +65,12 @@
         .zone-card { background: var(--card-gray); border-radius: 12px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px solid transparent; cursor: pointer; padding: 2px; text-align: center; transition: all 0.2s ease-in-out; min-height: 0; }
         .zone-card:active { transform: scale(0.97); }
         .zone-card.detected { border: 3px solid var(--green) !important; box-shadow: 0 0 15px rgba(50, 215, 75, 0.4); transform: scale(1.03); background-color: rgba(50, 215, 75, 0.1); }
+              .zone-card.border-option {
+            border: 3px solid #ff9500 !important;
+            box-shadow: 0 0 15px rgba(255, 149, 0, 0.4);
+            transform: scale(1.03);
+            background-color: rgba(255, 149, 0, 0.1);
+        }
         .zone-card.locked { opacity: 0.35; pointer-events: none; }
         .zone-card b { font-size: 14px; color: var(--card-text); font-weight: 600; }
        
@@ -194,6 +200,7 @@
        
         let detectedCode = null;
         let detectedStreetName = "";
+        let detectedZones = [];
         let isFreeParking = false;
         let pendingTimer = null;
         let realPlaceName = "";
@@ -330,7 +337,7 @@
                 streetEl.innerText = "";
                 if (radnoVremeEl) radnoVremeEl.innerText = "";
             } else {
-                let statusTekst = !isParked ? t.moving : (detectedStreetName ? cyrToLat(detectedStreetName) : t.selectZone);
+                 let statusTekst = !isParked ? t.moving : (detectedCode === "BORDER" ? (lang === 'SRB' ? "⚠️ IVICA ZONA! PROVERITE TABLU" : "⚠️ ZONE EDGE! CHECK THE SIGN") : (detectedStreetName ? cyrToLat(detectedStreetName) : t.selectZone));
                 streetEl.innerText = statusTekst; 
                 if (radnoVremeEl) {
                     if (currentCityKey && parkingData[currentCityKey]) {
@@ -380,7 +387,8 @@
                     card.className = "zone-card locked";
                     card.innerHTML = `<b>${name}</b>${displayCode}`;
                 } else {
-                    let isAktivnaZona = (detectedCode && smsCode === detectedCode && isParked);
+                     let isAktivnaZona = (detectedCode && detectedCode !== "BORDER" && smsCode === detectedCode && isParked);
+                    let isGraničnaOpcija = (detectedCode === "BORDER" && detectedZones.some(z => z.code === smsCode) && isParked);
                     if (i === 0 && detectedCode && isParked && currentCityKey && parkingData[currentCityKey]) {
                         let city = parkingData[currentCityKey];
                         let detectedZoneIndex = currentCodes.indexOf(detectedCode);
@@ -390,7 +398,7 @@
                         if (isAllowed) isAktivnaZona = true;
                     }
 
-                    card.className = `zone-card ${isAktivnaZona ? 'detected' : ''}`;
+                     card.className = `zone-card ${isAktivnaZona ? 'detected' : ''} ${isGraničnaOpcija ? 'border-option' : ''}`;
                     if (i === 0 && currentCityKey && parkingData[currentCityKey].dailyInfo) {
                         displayCode += `<span style="display:block; font-size:10px; color:#ff9500; margin-top:3px; font-weight:600; line-height:1.2;">${cyrToLat(parkingData[currentCityKey].dailyInfo)}</span>`;
                     }
@@ -433,11 +441,30 @@
                 let cityName = cyrToLat(parkingData[closestCity].name).replace(/opština\s*|opstina\s*/gi, "").trim();
                 document.getElementById('loc').innerText = "📍 " + cityName;
                
-                if (parkingData[closestCity].streets) {
+                           if (parkingData[closestCity].streets) {
+                    let matches = [];
                     for (const zone of parkingData[closestCity].streets) {
                         if (getDistanceInMeters(lat, lon, zone.center_lat, zone.center_lon) <= zone.radius) {
-                            detectedCode = zone.code; detectedStreetName = cyrToLat(zone.name); break;
+                            // Izbegavamo dupliranje istih zona u listi preklapanja
+                            if (!matches.some(m => m.code === zone.code)) {
+                                matches.push({ code: zone.code, name: cyrToLat(zone.name) });
+                            }
                         }
+                    }
+                    detectedZones = matches;
+                   
+                    if (matches.length === 1) {
+                        // Čista situacija - samo jedna zona detektovana
+                        detectedCode = matches[0].code;
+                        detectedStreetName = matches[0].name;
+                    } else if (matches.length > 1) {
+                        // Korisnik je na granici više zona
+                        detectedCode = "BORDER";
+                        detectedStreetName = "GRANICA ZONA";
+                    } else {
+                        // Nije detektovana nijedna specifična ulica/zona u gradu
+                        detectedCode = null;
+                        detectedStreetName = "";
                     }
                 }
             } else {
