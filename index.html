@@ -207,7 +207,11 @@
         let currentSpeed = 0;
         let currentLat = null; 
         let currentLon = null;
-
+        let userCredit = parseInt(localStorage.getItem('ipi_credit'));
+        if (isNaN(userCredit)) {
+            userCredit = 500; // Početni testni kredit
+            localStorage.setItem('ipi_credit', userCredit);
+        }
         const TRANSLATE = {
     SRB: {
         locating: "📍 Lociranje...", gpsOff: "📍 UKLJUČI LOKACIJU", veh: "Vozilo", pick: "IZBOR VOZILA",
@@ -304,6 +308,7 @@
             document.getElementById('lbl-air-title').innerText = t.airTitle;
             document.getElementById('lbl-garage-title').innerText = t.garageTitle;
             document.getElementById('credit-label').innerText = t.credit;
+            document.getElementById('credit-value').innerText = userCredit + " RSD";
            
             for(let i=1; i<=5; i++) {
                 let btn = document.getElementById(`lbl-close${i}`);
@@ -593,14 +598,12 @@
                 }
             }
 
-            
             if (diff <= 0) {
                 localStorage.removeItem('ipi_timer_target');
                 localStorage.removeItem('ipi_notified');
                 timerBar.classList.remove('visible');
                 if (radnoVremeEl) radnoVremeEl.style.display = 'block';
                
-                
                 if ("vibrate" in navigator && Notification.permission === "granted") {
                     navigator.vibrate([1000]);
                 }
